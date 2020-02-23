@@ -23,7 +23,6 @@ import br.com.jobtechIO.domain.dto.response.DeficiencyResponse;
 import br.com.jobtechIO.domain.entities.Deficiency;
 import br.com.jobtechIO.domain.mapper.DeficiencyMapper;
 import br.com.jobtechIO.service.DeficiencyService;
-import javassist.NotFoundException;
 
 @RestController
 @RequestMapping("/deficiency")
@@ -38,7 +37,7 @@ public class DeficiencyController {
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<DeficiencyResponse> getById(@PathVariable Integer id) throws NotFoundException {
+    public ResponseEntity<DeficiencyResponse> getById(@PathVariable Integer id) {
         return ResponseEntity.ok(mapper.entityToDto(service.getById(id)));
     }
 
@@ -48,7 +47,7 @@ public class DeficiencyController {
                 service.listAllDeficiencies().stream().map(x -> mapper.entityToDto(x)).collect(Collectors.toList()));
     }
 
-    @GetMapping(value = "/{description}")
+    @GetMapping(value = "filtered/{description}")
     public ResponseEntity<List<DeficiencyResponse>> filterByDescription(@Valid @PathVariable String description) {
         return ResponseEntity.ok(service.listByDescription(description).stream().map(x -> mapper.entityToDto(x))
                 .collect(Collectors.toList()));
@@ -69,13 +68,13 @@ public class DeficiencyController {
 
     @PutMapping(value = "/{id}")
     public ResponseEntity<DeficiencyResponse> put(@Valid @RequestBody DeficiencyCreateRequest model,
-            @PathVariable Integer id) throws NotFoundException {
+            @PathVariable Integer id) {
 
         return ResponseEntity.ok(mapper.entityToDto(service.update(mapper.DtoToEntity(model), id)));
     }
 
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Integer id) throws NotFoundException {
+    public ResponseEntity<Void> delete(@PathVariable Integer id) {
 
         service.delete(id);
 
