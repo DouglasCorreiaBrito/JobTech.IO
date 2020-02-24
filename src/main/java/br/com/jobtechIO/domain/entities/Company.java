@@ -27,7 +27,7 @@ public class Company extends BaseEntity {
     private String email;
 
     @Column(nullable = false, length = 250)
-    private String adres;
+    private String address;
 
     @Column(nullable = false, length = 18)
     private String cnpj;

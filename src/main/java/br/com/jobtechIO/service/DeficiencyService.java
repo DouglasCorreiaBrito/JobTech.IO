@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.jobtechIO.domain.entities.Deficiency;
+import br.com.jobtechIO.exceptions.GenericNotFoundException;
 import br.com.jobtechIO.repository.DeficiencyRepository;
-import javassist.NotFoundException;
 
 @Service
 public class DeficiencyService {
@@ -25,9 +25,9 @@ public class DeficiencyService {
         return repository.findAll();
     }
 
-    public Deficiency getById(Integer id) throws NotFoundException {
+    public Deficiency getById(Integer id) {
         Optional<Deficiency> dOptional = repository.findById(id);
-        return dOptional.orElseThrow(() -> new NotFoundException("Deficiency not found"));
+        return dOptional.orElseThrow(() -> new GenericNotFoundException("Deficiency not found"));
     }
 
     public List<Deficiency> listByDescription(String description) {
@@ -39,11 +39,11 @@ public class DeficiencyService {
         return repository.save(entity);
     }
 
-    public void delete(Integer id) throws NotFoundException {
+    public void delete(Integer id) {
         repository.delete(getById(id));
     }
 
-    public Deficiency update(Deficiency entity, Integer id) throws NotFoundException {
+    public Deficiency update(Deficiency entity, Integer id) {
 
         Deficiency deficiency = getById(id);
 
@@ -51,6 +51,6 @@ public class DeficiencyService {
         deficiency.setId(id);
         deficiency.setUpdatedAt(LocalDate.now());
 
-        return repository.save(entity);
+        return repository.save(deficiency);
     }
 }
