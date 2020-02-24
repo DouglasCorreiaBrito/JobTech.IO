@@ -38,6 +38,6 @@ public class Candidate extends BaseEntity {
     private LocalDate birthdate;
 
     @Transient
-    private List<Skills> skillsList;
+    private List<Skill> skillsList;
 
 }

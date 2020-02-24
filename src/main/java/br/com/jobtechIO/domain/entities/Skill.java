@@ -20,7 +20,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Deficiency extends BaseEntity {
+public class Skill extends BaseEntity {
 
     @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY,
@@ -28,7 +28,7 @@ public class Deficiency extends BaseEntity {
                 CascadeType.PERSIST,
                 CascadeType.MERGE
             },
-            mappedBy = "deficiencies")
+            mappedBy = "skills")
     private List<JobOpportunity> jobOpportunities;
 
     @Column(nullable = false, length = 250)

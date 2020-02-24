@@ -2,15 +2,18 @@ package br.com.jobtechIO.domain.entities;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.Transient;
 
-import br.com.jobtechIO.domain.enumerations.SeniorityEnum;
+import br.com.jobtechIO.domain.enumerations.ExperienceEnum;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,6 +30,9 @@ public class JobOpportunity extends BaseEntity {
     @JoinColumn(name = "idcompany", nullable = false)
     private Company company;
 
+    @Column(nullable = false, length = 100)
+    private String title;
+
     @Column(nullable = false, length = 250)
     private String description;
 
@@ -36,11 +42,23 @@ public class JobOpportunity extends BaseEntity {
     @Column(nullable = false, length = 250)
     private String benefits;
 
-    @Transient
-    private List<Deficiency> deficiencyList;
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                CascadeType.MERGE
+            })
+    @JoinTable(name = "jobOpportunityDeficiency",
+            joinColumns = { @JoinColumn(name = "jobOpportunityId") },
+            inverseJoinColumns = { @JoinColumn(name = "deficiencyId") })
+    private List<Deficiency> deficiencies;
 
-    @Transient
-    private List<Skills> skillsList;
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                CascadeType.MERGE
+            })
+    @JoinTable(name = "jobOpportunitySkill",
+            joinColumns = { @JoinColumn(name = "jobOpportunityId") },
+            inverseJoinColumns = { @JoinColumn(name = "skillId") })
+    private List<Skill> skills;
 
     @Column(nullable = false, length = 250)
     private String office;
@@ -55,6 +73,6 @@ public class JobOpportunity extends BaseEntity {
     private String typeOfContract;
 
    @Enumerated(EnumType.STRING)
-    private SeniorityEnum seniority;
+    private ExperienceEnum seniority;
 
 }
