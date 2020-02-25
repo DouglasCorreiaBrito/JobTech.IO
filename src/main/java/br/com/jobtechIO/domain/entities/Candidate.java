@@ -45,8 +45,8 @@ public class Candidate extends BaseEntity {
             cascade = {
                 CascadeType.MERGE
             })
-    @JoinTable(name = "jobOpportunitySkill",
-            joinColumns = { @JoinColumn(name = "jobOpportunityId") },
+    @JoinTable(name = "candidateSkill",
+            joinColumns = { @JoinColumn(name = "candidateId") },
             inverseJoinColumns = { @JoinColumn(name = "skillId") })
     private List<Skill> skills;
 
