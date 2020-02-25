@@ -5,7 +5,10 @@ import java.util.List;
 import br.com.jobtechIO.domain.entities.Company;
 import br.com.jobtechIO.domain.entities.Deficiency;
 import br.com.jobtechIO.domain.entities.Skill;
+import br.com.jobtechIO.domain.enumerations.ContractEnum;
 import br.com.jobtechIO.domain.enumerations.ExperienceEnum;
+import br.com.jobtechIO.domain.enumerations.JobOpportunityStatusEnum;
+import br.com.jobtechIO.domain.enumerations.YesNoPartial;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,8 +20,6 @@ import lombok.NoArgsConstructor;
 @Builder
 public class JobOpportunityResponse {
 
-//TODO apply "benefícios" and think about this salary to resolve in a enum
-
     private Integer id;
 
     private Company company;
@@ -26,6 +27,8 @@ public class JobOpportunityResponse {
     private String title;
 
     private String description;
+    
+    private JobOpportunityStatusEnum status;
 
     private Double minimumWage;
 
@@ -39,9 +42,9 @@ public class JobOpportunityResponse {
 
     private String location;
 
-    private Boolean remote;
+    private YesNoPartial remote;
 
-    private String typeOfContract;
+    private ContractEnum typeOfContract;
 
     private ExperienceEnum seniority;
 

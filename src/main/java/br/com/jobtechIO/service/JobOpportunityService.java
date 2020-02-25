@@ -51,6 +51,7 @@ public class JobOpportunityService {
         jobOpportunity.setCompany(entity.getCompany());
         jobOpportunity.setTitle(entity.getTitle());
         jobOpportunity.setDescription(entity.getDescription());
+        jobOpportunity.setStatus(entity.getStatus());
         jobOpportunity.setMinimumWage(entity.getMinimumWage());
         jobOpportunity.setBenefits(entity.getBenefits());
         jobOpportunity.setDeficiencies(entity.getDeficiencies());

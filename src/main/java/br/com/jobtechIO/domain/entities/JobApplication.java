@@ -24,11 +24,10 @@ public class JobApplication extends BaseEntity {
     public JobOpportunity jobOpportunity;
     
     @ManyToOne
-    @JoinColumn(name = "idcandidate", nullable = false)
+    @JoinColumn(name = "idCandidate", nullable = false)
     public Candidate candidate;
 
     @Enumerated(EnumType.STRING)
     private VacantStatus status;
-    
    
 }

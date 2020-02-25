@@ -25,11 +25,18 @@ public class Skill extends BaseEntity {
     @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY,
             cascade = {
-                CascadeType.PERSIST,
                 CascadeType.MERGE
             },
             mappedBy = "skills")
     private List<JobOpportunity> jobOpportunities;
+    
+    @JsonIgnore
+    @ManyToMany(fetch = FetchType.LAZY,
+    cascade = {
+    		CascadeType.MERGE
+    },
+    mappedBy = "skills")
+    private List<Candidate> candidates;
 
     @Column(nullable = false, length = 250)
     private String description;
