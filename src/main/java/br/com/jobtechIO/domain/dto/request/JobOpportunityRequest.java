@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import br.com.jobtechIO.domain.entities.Company;
@@ -13,6 +14,7 @@ import br.com.jobtechIO.domain.enumerations.ContractEnum;
 import br.com.jobtechIO.domain.enumerations.ExperienceEnum;
 import br.com.jobtechIO.domain.enumerations.JobOpportunityStatusEnum;
 import br.com.jobtechIO.domain.enumerations.YesNoPartial;
+import br.com.jobtechIO.domain.validators.ValueOfEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,57 +25,49 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class JobOpportunityRequest {
-    
-    @NotEmpty(message = "company is required")
-    @NotBlank(message = "company is not blank")
-    private Company company;
-    
-    @NotEmpty(message = "title is required")
-    @NotBlank(message = "title is not blank")
-    @Size(max = 200)
-    private String title;
-    
-    //TODO if description will be an HTML template, add a HTML parser to validate data integrity
-    @NotEmpty(message = "description is required")
-    @NotBlank(message = "description is not blank")
-    private String description;
-    
-    @NotEmpty(message = "status is required")
-    @NotBlank(message = "status is not blank")
-    private JobOpportunityStatusEnum status;
 
-    @NotEmpty(message = "minimumWage is required")
-    @NotBlank(message = "minimumWage is not blank")
-    private Double minimumWage;
+	@NotNull
+	private Company company;
 
-    private String benefits;
+	@NotEmpty(message = "title is required")
+	@NotBlank(message = "title is not blank")
+	@Size(max = 200)
+	private String title;
 
-    private List<Deficiency> deficiencies;
+	// TODO if description will be an HTML template, add a HTML parser to validate
+	// data integrity
+	@NotEmpty(message = "description is required")
+	private String description;
 
-    @NotEmpty(message = "skills are required")
-    @NotBlank(message = "skills are not blank")
-    private List<Skill> skills;
+	@NotNull
+	private JobOpportunityStatusEnum status;
 
-    @NotEmpty(message = "office is required")
-    @NotBlank(message = "office is not blank")
-    @Size(max = 200)
-    private String office;
+	@NotNull
+	private Double minimumWage;
 
-    @NotEmpty(message = "location is required")
-    @NotBlank(message = "location is not blank")
-    @Size(max = 200)
-    private String location;
+	@NotNull
+	private String benefits;
 
-    @NotEmpty(message = "remote is required")
-    @NotBlank(message = "remote is not blank")
-    private YesNoPartial remote;
+	private List<Deficiency> deficiencies;
 
-    @NotEmpty(message = "typeOfContract is required")
-    @NotBlank(message = "typeOfContract is not blank")
-    private ContractEnum typeOfContract;
+	private List<Skill> skills;
 
-    @NotEmpty(message = "seniority is required")
-    @NotBlank(message = "seniority is not blank")
-    private ExperienceEnum seniority;
-    
+	@NotEmpty(message = "office is required")
+	@Size(max = 200)
+	private String office;
+
+	@NotEmpty(message = "location is required")
+	@Size(max = 200)
+	private String location;
+
+//	@ValueOfEnum(enumClass = YesNoPartial.class, message = "remote should be YES, NO or PARTIAL")
+	@NotNull
+	private YesNoPartial remote;
+
+	@NotNull
+	private ContractEnum typeOfContract;
+
+	@NotNull
+	private ExperienceEnum seniority;
+
 }

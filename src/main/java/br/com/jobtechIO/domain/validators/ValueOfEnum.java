@@ -12,14 +12,16 @@ import javax.validation.Payload;
 
 @Target({ FIELD })
 @Retention(RUNTIME)
-@Constraint(validatedBy = PhoneValidator.class)
 @Documented
-public @interface Phone {
+@Constraint(validatedBy = ValueOfEnumValidator.class)
+public @interface ValueOfEnum {
+	Class<? extends Enum<?>> enumClass();
 
-	String message() default "Telefone inválido, deve ter entre 8 e 11 digítos numéricos.";
+	String message()
+
+	default "must be any of enum {enumClass}";
 
 	Class<?>[] groups() default {};
 
 	Class<? extends Payload>[] payload() default {};
-
 }
