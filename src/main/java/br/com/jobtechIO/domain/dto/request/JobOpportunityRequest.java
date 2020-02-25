@@ -14,7 +14,6 @@ import br.com.jobtechIO.domain.enumerations.ContractEnum;
 import br.com.jobtechIO.domain.enumerations.ExperienceEnum;
 import br.com.jobtechIO.domain.enumerations.JobOpportunityStatusEnum;
 import br.com.jobtechIO.domain.enumerations.YesNoPartial;
-import br.com.jobtechIO.domain.validators.ValueOfEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -34,8 +33,7 @@ public class JobOpportunityRequest {
 	@Size(max = 200)
 	private String title;
 
-	// TODO if description will be an HTML template, add a HTML parser to validate
-	// data integrity
+	// TODO if description will be an HTML template, add a HTML parser to validate data integrity
 	@NotEmpty(message = "description is required")
 	private String description;
 
@@ -60,7 +58,6 @@ public class JobOpportunityRequest {
 	@Size(max = 200)
 	private String location;
 
-//	@ValueOfEnum(enumClass = YesNoPartial.class, message = "remote should be YES, NO or PARTIAL")
 	@NotNull
 	private YesNoPartial remote;
 
