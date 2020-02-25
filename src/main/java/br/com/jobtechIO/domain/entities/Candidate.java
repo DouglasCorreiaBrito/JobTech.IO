@@ -3,9 +3,13 @@ package br.com.jobtechIO.domain.entities;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Transient;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -37,7 +41,13 @@ public class Candidate extends BaseEntity {
     @Column(nullable = false)
     private LocalDate birthdate;
 
-    @Transient
-    private List<Skills> skillsList;
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                CascadeType.MERGE
+            })
+    @JoinTable(name = "jobOpportunitySkill",
+            joinColumns = { @JoinColumn(name = "jobOpportunityId") },
+            inverseJoinColumns = { @JoinColumn(name = "skillId") })
+    private List<Skill> skills;
 
 }
