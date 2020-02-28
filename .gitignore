@@ -29,3 +29,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Database config ###
+application.properties
+
