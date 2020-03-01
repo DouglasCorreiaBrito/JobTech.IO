@@ -44,17 +44,12 @@ public class JobOpportunityMapper {
 	}
 	
 	public JobOpportunity requestToEntity(JobOpportunityRequest request) {
-		
-		System.out.println("DEBUG");
-		System.out.println(request.getCompanyId());
-		System.out.println("DEBUG");
-		
 		JobOpportunity jobOpportunity =  mapper.map(request, JobOpportunity.class);
+		
 		jobOpportunity.setCompany(companyService.getById(request.getCompanyId()));
 		jobOpportunity.setSkills(getSkillsModels(request.getSkills()));
 		jobOpportunity.setDeficiencies(getDeficienciesModels(request.getDeficiencies()));
 		
-		System.out.println("DEBUG");
 		return jobOpportunity;
 	}
 
