@@ -14,47 +14,48 @@ import br.com.jobtechIO.repository.CompanyRepository;
 @Service
 public class CompanyService {
 
-    private final CompanyRepository repository;
+	private final CompanyRepository repository;
 
-    @Autowired
-    public CompanyService(CompanyRepository repository) {
-        this.repository = repository;
-    }
+	@Autowired
+	public CompanyService(CompanyRepository repository) {
+		this.repository = repository;
+	}
 
-    public List<Company> listAllCompanies() {
-        return repository.findAll();
-    }
+	public List<Company> listAllCompanies() {
+		return repository.findAll();
+	}
 
-    public Company getById(Integer id)   {
-        Optional<Company> cOptional = repository.findById(id);
-        return cOptional.orElseThrow(() -> new GenericNotFoundException("Company not found"));
-    }
+	public Company getById(Integer id) {
+		Optional<Company> cOptional = repository.findById(id);
+		return cOptional.orElseThrow(() -> new GenericNotFoundException("Company not found"));
+	}
 
-    public List<Company> listByName(String name) {
-        return repository.findByName(name);
-    }
+	public List<Company> listByName(String name) {
+		return repository.findByName(name);
+	}
 
-    public Company create(Company entity) {
-        entity.setCreatedAt(LocalDate.now());
-        return repository.save(entity);
-    }
+	public Company create(Company entity) {
+		entity.setCreatedAt(LocalDate.now());
+		entity.setUpdatedAt(LocalDate.now());
+		return repository.save(entity);
+	}
 
-    public void delete(Integer id)   {
-        repository.delete(getById(id));
-    }
+	public void delete(Integer id) {
+		repository.delete(getById(id));
+	}
 
-    public Company update(Company entity, Integer id)  {
+	public Company update(Company entity, Integer id) {
 
-        Company company = getById(id);
+		Company company = getById(id);
 
-        company.setId(id);
-        company.setUpdatedAt(LocalDate.now());
-        company.setAddress(entity.getAddress());
-        company.setCnpj(entity.getCnpj());
-        company.setEmail(entity.getEmail());
-        company.setName(entity.getName());
-        company.setTelephone(entity.getTelephone());
+		company.setId(id);
+		company.setUpdatedAt(LocalDate.now());
+		company.setAddress(entity.getAddress());
+		company.setCnpj(entity.getCnpj());
+		company.setEmail(entity.getEmail());
+		company.setName(entity.getName());
+		company.setTelephone(entity.getTelephone());
 
-        return repository.save(company);
-    }
+		return repository.save(company);
+	}
 }

@@ -28,57 +28,57 @@ import br.com.jobtechIO.service.DeficiencyService;
 @RequestMapping("/deficiency")
 public class DeficiencyController {
 
-    private final DeficiencyService service;
-    private final DeficiencyMapper mapper;
+	private final DeficiencyService service;
+	private final DeficiencyMapper mapper;
 
-    public DeficiencyController(DeficiencyService service, DeficiencyMapper mapper) {
-        this.service = service;
-        this.mapper = mapper;
-    }
+	public DeficiencyController(DeficiencyService service, DeficiencyMapper mapper) {
+		this.service = service;
+		this.mapper = mapper;
+	}
 
-    @GetMapping(value = "/{id}")
-    public ResponseEntity<DeficiencyResponse> getById(@PathVariable Integer id) {
-        return ResponseEntity.ok(mapper.entityToDto(service.getById(id)));
-    }
+	@GetMapping(value = "/{id}")
+	public ResponseEntity<DeficiencyResponse> getById(@PathVariable Integer id) {
+		return ResponseEntity.ok(mapper.entityToDto(service.getById(id)));
+	}
 
-    @GetMapping
-    public ResponseEntity<List<DeficiencyResponse>> getAll() {
-        return ResponseEntity.ok(
-                service.listAllDeficiencies().stream().map(x -> mapper.entityToDto(x)).collect(Collectors.toList()));
-    }
+	@GetMapping
+	public ResponseEntity<List<DeficiencyResponse>> getAll() {
+		return ResponseEntity.ok(
+				service.listAllDeficiencies().stream().map(x -> mapper.entityToDto(x)).collect(Collectors.toList()));
+	}
 
-    @GetMapping(value = "filtered/{description}")
-    public ResponseEntity<List<DeficiencyResponse>> filterByDescription(@Valid @PathVariable String description) {
-        return ResponseEntity.ok(service.listByDescription(description).stream().map(x -> mapper.entityToDto(x))
-                .collect(Collectors.toList()));
-    }
+	@GetMapping(value = "filtered/{description}")
+	public ResponseEntity<List<DeficiencyResponse>> filterByDescription(@Valid @PathVariable String description) {
+		return ResponseEntity.ok(service.listByDescription(description).stream().map(x -> mapper.entityToDto(x))
+				.collect(Collectors.toList()));
+	}
 
-    @PostMapping
-    @Transactional
-    public ResponseEntity<DeficiencyResponse> post(@Valid @RequestBody DeficiencyCreateRequest model,
-            UriComponentsBuilder uriComponentsBuilder) {
+	@PostMapping
+	@Transactional
+	public ResponseEntity<DeficiencyResponse> post(@Valid @RequestBody DeficiencyCreateRequest model,
+			UriComponentsBuilder uriComponentsBuilder) {
 
-        Deficiency entity = service.create(mapper.DtoToEntity(model));
+		Deficiency entity = service.create(mapper.DtoToEntity(model));
 
-        URI uri = uriComponentsBuilder.path("/deficiency/{id}").buildAndExpand(entity.getId()).toUri();
+		URI uri = uriComponentsBuilder.path("/deficiency/{id}").buildAndExpand(entity.getId()).toUri();
 
-        return ResponseEntity.created(uri).body(mapper.entityToDto(entity));
+		return ResponseEntity.created(uri).body(mapper.entityToDto(entity));
 
-    }
+	}
 
-    @PutMapping(value = "/{id}")
-    public ResponseEntity<DeficiencyResponse> put(@Valid @RequestBody DeficiencyCreateRequest model,
-            @PathVariable Integer id) {
+	@PutMapping(value = "/{id}")
+	public ResponseEntity<DeficiencyResponse> put(@Valid @RequestBody DeficiencyCreateRequest model,
+			@PathVariable Integer id) {
 
-        return ResponseEntity.ok(mapper.entityToDto(service.update(mapper.DtoToEntity(model), id)));
-    }
+		return ResponseEntity.ok(mapper.entityToDto(service.update(mapper.DtoToEntity(model), id)));
+	}
 
-    @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Integer id) {
+	@DeleteMapping(value = "/{id}")
+	public ResponseEntity<Void> delete(@PathVariable Integer id) {
 
-        service.delete(id);
+		service.delete(id);
 
-        return ResponseEntity.ok().build();
+		return ResponseEntity.ok().build();
 
-    }
+	}
 }

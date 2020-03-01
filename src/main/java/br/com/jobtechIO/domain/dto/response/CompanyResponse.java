@@ -11,15 +11,15 @@ import lombok.NoArgsConstructor;
 @Builder
 public class CompanyResponse {
 
-    private Integer id;
+	private Integer id;
 
-    private String name;
+	private String name;
 
-    private String telephone;
+	private String telephone;
 
-    private String email;
+	private String email;
 
-    private String address;
+	private String address;
 
-    private String cnpj;
+	private String cnpj;
 }

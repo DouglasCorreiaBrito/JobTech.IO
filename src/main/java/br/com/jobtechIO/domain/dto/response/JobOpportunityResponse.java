@@ -20,32 +20,32 @@ import lombok.NoArgsConstructor;
 @Builder
 public class JobOpportunityResponse {
 
-    private Integer id;
+	private Integer id;
 
-    private Company company;
+	private Company company;
 
-    private String title;
+	private String title;
 
-    private String description;
-    
-    private JobOpportunityStatusEnum status;
+	private String description;
 
-    private Double minimumWage;
+	private JobOpportunityStatusEnum status;
 
-    private String benefits;
+	private Double minimumWage;
 
-    private List<Deficiency> deficiencies;
+	private String benefits;
 
-    private List<Skill> skills;
+	private List<Deficiency> deficiencies;
 
-    private String office;
+	private List<Skill> skills;
 
-    private String location;
+	private String office;
 
-    private YesNoPartial remote;
+	private String location;
 
-    private ContractEnum typeOfContract;
+	private YesNoPartial remote;
 
-    private ExperienceEnum seniority;
+	private ContractEnum typeOfContract;
+
+	private ExperienceEnum seniority;
 
 }

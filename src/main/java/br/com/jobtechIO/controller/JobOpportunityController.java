@@ -28,57 +28,54 @@ import br.com.jobtechIO.service.JobOpportunityService;
 @RequestMapping("/company/{companyId}/jobs")
 public class JobOpportunityController {
 
-    private final JobOpportunityService service;
-    private final JobOpportunityMapper mapper;
+	private final JobOpportunityService service;
+	private final JobOpportunityMapper mapper;
 
-    public JobOpportunityController(JobOpportunityService service, JobOpportunityMapper mapper) {
-        this.service = service;
-        this.mapper = mapper;
-    }
+	public JobOpportunityController(JobOpportunityService service, JobOpportunityMapper mapper) {
+		this.service = service;
+		this.mapper = mapper;
+	}
 
-    @GetMapping(value = "/{id}")
-    public ResponseEntity<JobOpportunityResponse> getById(@PathVariable Integer id) {
-        return ResponseEntity.ok(mapper.entityToDto(service.getById(id)));
-    }
+	@GetMapping(value = "/{id}")
+	public ResponseEntity<JobOpportunityResponse> getById(@PathVariable Integer id) {
+		return ResponseEntity.ok(mapper.entityToDto(service.getById(id)));
+	}
 
-    @GetMapping
-    public ResponseEntity<List<JobOpportunityResponse>> getAll() {
-        return ResponseEntity
-                .ok(service.listAllJobOpportunities().stream().map(x -> mapper.entityToDto(x)).collect(Collectors.toList()));
-    }
+	@GetMapping
+	public ResponseEntity<List<JobOpportunityResponse>> getAll() {
+		return ResponseEntity.ok(service.listAllJobOpportunities().stream().map(x -> mapper.entityToDto(x))
+				.collect(Collectors.toList()));
+	}
 
-    @GetMapping(value = "filtered/{title}")
-    public ResponseEntity<List<JobOpportunityResponse>> filterByTitle(@Valid @PathVariable String title) {
-        return ResponseEntity
-                .ok(service.listByTitle(title).stream().map(x -> mapper.entityToDto(x)).collect(Collectors.toList()));
-    }
+	@GetMapping(value = "filtered/{title}")
+	public ResponseEntity<List<JobOpportunityResponse>> filterByTitle(@Valid @PathVariable String title) {
+		return ResponseEntity
+				.ok(service.listByTitle(title).stream().map(x -> mapper.entityToDto(x)).collect(Collectors.toList()));
+	}
 
-    @PostMapping
-    @Transactional
-    public ResponseEntity<JobOpportunityResponse> post(@Valid @RequestBody JobOpportunityRequest model,
-            UriComponentsBuilder uriComponentsBuilder) {
+	@PostMapping
+	@Transactional
+	public ResponseEntity<JobOpportunityResponse> post(@Valid @RequestBody JobOpportunityRequest model,
+			UriComponentsBuilder uriComponentsBuilder) {
 
-        JobOpportunity entity = service.create(mapper.DtoToEntity(model));
+		JobOpportunity entity = service.create(mapper.requestToEntity(model));
 
-        URI uri = uriComponentsBuilder.path("/jobs/{id}").buildAndExpand(entity.getId()).toUri();
+		URI uri = uriComponentsBuilder.path("/jobs/{id}").buildAndExpand(entity.getId()).toUri();
 
-        return ResponseEntity.created(uri).body(mapper.entityToDto(entity));
+		return ResponseEntity.created(uri).body(mapper.entityToDto(entity));
 
-    }
+	}
 
-    @PutMapping(value = "/{id}")
-    public ResponseEntity<JobOpportunityResponse> put(@Valid @RequestBody JobOpportunityRequest model,
-            @PathVariable Integer id) {
+	@PutMapping(value = "/{id}")
+	public ResponseEntity<JobOpportunityResponse> put(@Valid @RequestBody JobOpportunityRequest model,
+			@PathVariable Integer id) {
 
-        return ResponseEntity.ok(mapper.entityToDto(service.update(mapper.DtoToEntity(model), id)));
-    }
+		return ResponseEntity.ok(mapper.entityToDto(service.update(mapper.requestToEntity(model), id)));
+	}
 
-    @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Integer id) {
-
-        service.delete(id);
-
-        return ResponseEntity.ok().build();
-
-    }
+	@DeleteMapping(value = "/{id}")
+	public ResponseEntity<Void> delete(@PathVariable Integer id) {
+		service.delete(id);
+		return ResponseEntity.ok().build();
+	}
 }

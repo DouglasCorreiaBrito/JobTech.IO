@@ -19,15 +19,15 @@ import lombok.Setter;
 @Entity
 public class JobApplication extends BaseEntity {
 
-    @ManyToOne
-    @JoinColumn(name = "idjobOpportunity", nullable = false)
-    public JobOpportunity jobOpportunity;
-    
-    @ManyToOne
-    @JoinColumn(name = "idCandidate", nullable = false)
-    public Candidate candidate;
+	@ManyToOne
+	@JoinColumn(name = "idjobOpportunity", nullable = false)
+	public JobOpportunity jobOpportunity;
 
-    @Enumerated(EnumType.STRING)
-    private VacantStatus status;
-   
+	@ManyToOne
+	@JoinColumn(name = "idCandidate", nullable = false)
+	public Candidate candidate;
+
+	@Enumerated(EnumType.STRING)
+	private VacantStatus status;
+
 }

@@ -14,10 +14,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class SkillRequest {
-    
-    @NotEmpty(message = "title is required")
+
+	@NotEmpty(message = "title is required")
 	@NotBlank(message = "title is not blank")
 	@Size(max = 200)
-    private String description;
-    
+	private String description;
+
 }

@@ -19,23 +19,22 @@ import lombok.NoArgsConstructor;
 @Builder
 public class CompanyRequest {
 
+	@NotEmpty(message = "name is required")
+	@NotBlank(message = "name is not blank")
+	@Size(max = 200)
+	private String name;
 
-    @NotEmpty(message = "name is required")
-    @NotBlank(message = "name is not blank")
-    @Size(max = 200)
-    private String name;
+	@Phone(message = "the number received is not a phone")
+	private String telephone;
 
-    @Phone(message = "the number received is not a phone")
-    private String telephone;
+	@Email(message = "the string received is not a email")
+	private String email;
 
-    @Email(message = "the string received is not a email")
-    private String email;
+	@NotEmpty(message = "name is required")
+	@NotBlank(message = "name is not blank")
+	@Size(max = 200)
+	private String address;
 
-    @NotEmpty(message = "name is required")
-    @NotBlank(message = "name is not blank")
-    @Size(max = 200)
-    private String address;
-
-    @CNPJ
-    private String cnpj;
+	@CNPJ
+	private String cnpj;
 }

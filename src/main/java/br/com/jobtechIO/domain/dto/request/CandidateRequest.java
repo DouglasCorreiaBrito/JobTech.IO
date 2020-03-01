@@ -10,7 +10,6 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import br.com.jobtechIO.domain.entities.Skill;
 import br.com.jobtechIO.domain.validators.Phone;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -47,6 +46,6 @@ public class CandidateRequest {
 	@DateTimeFormat
 	private LocalDate birthdate;
 
-	private List<Skill> skills;
+	private List<Integer> skills;
 
 }

@@ -22,23 +22,15 @@ import lombok.Setter;
 @Entity
 public class Skill extends BaseEntity {
 
-    @JsonIgnore
-    @ManyToMany(fetch = FetchType.LAZY,
-            cascade = {
-                CascadeType.MERGE
-            },
-            mappedBy = "skills")
-    private List<JobOpportunity> jobOpportunities;
-    
-    @JsonIgnore
-    @ManyToMany(fetch = FetchType.LAZY,
-    cascade = {
-    		CascadeType.MERGE
-    },
-    mappedBy = "skills")
-    private List<Candidate> candidates;
+	@JsonIgnore
+	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.MERGE }, mappedBy = "skills")
+	private List<JobOpportunity> jobOpportunities;
 
-    @Column(nullable = false, length = 250)
-    private String description;
+	@JsonIgnore
+	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.MERGE }, mappedBy = "skills")
+	private List<Candidate> candidates;
+
+	@Column(nullable = false, length = 250)
+	private String description;
 
 }

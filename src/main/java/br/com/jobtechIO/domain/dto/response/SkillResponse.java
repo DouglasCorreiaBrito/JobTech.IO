@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
 @Builder
 public class SkillResponse {
 
-    private Integer id;
+	private Integer id;
 
-    private String description;
+	private String description;
 
 }

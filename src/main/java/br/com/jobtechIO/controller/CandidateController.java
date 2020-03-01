@@ -31,73 +31,69 @@ import br.com.jobtechIO.service.JobAplicationService;
 @RequestMapping("/users")
 public class CandidateController {
 
-    private final CandidateService service;
-    private final CandidateMapper mapper;
-    private final JobAplicationService jobAplicationService;
-    private final JobApplicationMapper jobApplicationMapper;
+	private final CandidateService service;
+	private final CandidateMapper mapper;
+	private final JobAplicationService jobAplicationService;
+	private final JobApplicationMapper jobApplicationMapper;
 
-    public CandidateController(CandidateService service, CandidateMapper mapper,JobAplicationService jobAplicationService, JobApplicationMapper jobApplicationMapper) {
-        this.service = service;
-        this.mapper = mapper;
-        this.jobAplicationService = jobAplicationService;
-        this.jobApplicationMapper = jobApplicationMapper;
-    }
+	public CandidateController(CandidateService service, CandidateMapper mapper,
+			JobAplicationService jobAplicationService, JobApplicationMapper jobApplicationMapper) {
+		this.service = service;
+		this.mapper = mapper;
+		this.jobAplicationService = jobAplicationService;
+		this.jobApplicationMapper = jobApplicationMapper;
+	}
 
-    @GetMapping(value = "/{id}")
-    public ResponseEntity<CandidateResponse> getById(@PathVariable Integer id) {
-        return ResponseEntity.ok(mapper.entityToDto(service.getById(id)));
-    }
+	@GetMapping(value = "/{id}")
+	public ResponseEntity<CandidateResponse> getById(@PathVariable Integer id) {
+		return ResponseEntity.ok(mapper.entityToDto(service.getById(id)));
+	}
 
-    @GetMapping
-    public ResponseEntity<List<CandidateResponse>> getAll() {
-        return ResponseEntity
-                .ok(service.listAllCandidates().stream().map(x -> mapper.entityToDto(x)).collect(Collectors.toList()));
-    }
+	@GetMapping
+	public ResponseEntity<List<CandidateResponse>> getAll() {
+		return ResponseEntity
+				.ok(service.listAllCandidates().stream().map(x -> mapper.entityToDto(x)).collect(Collectors.toList()));
+	}
 
-    @GetMapping(value = "filtered/{name}")
-    public ResponseEntity<List<CandidateResponse>> filterByName(@Valid @PathVariable String name) {
-        return ResponseEntity
-                .ok(service.listByName(name).stream().map(x -> mapper.entityToDto(x)).collect(Collectors.toList()));
-    }
+	@GetMapping(value = "filtered/{name}")
+	public ResponseEntity<List<CandidateResponse>> filterByName(@Valid @PathVariable String name) {
+		return ResponseEntity
+				.ok(service.listByName(name).stream().map(x -> mapper.entityToDto(x)).collect(Collectors.toList()));
+	}
 
-    @GetMapping(value = "filtered/jobAplication/{name}")
-    public ResponseEntity<List<JobApplicationResponse>> filterJobAplicationsByName(@Valid @PathVariable String name) {
-        return ResponseEntity
-                .ok(jobAplicationService.listJobApplicationsCandidateName(name).stream().map(x -> jobApplicationMapper.entityToDto(x)).collect(Collectors.toList()));
-    }
+	@GetMapping(value = "filtered/jobAplication/{name}")
+	public ResponseEntity<List<JobApplicationResponse>> filterJobAplicationsByName(@Valid @PathVariable String name) {
+		return ResponseEntity.ok(jobAplicationService.listJobApplicationsCandidateName(name).stream()
+				.map(x -> jobApplicationMapper.entityToDto(x)).collect(Collectors.toList()));
+	}
 
-    @GetMapping(value = "filtered/jobAplication/{cpf}")
-    public ResponseEntity<List<JobApplicationResponse>> filterJobAplicationsByCPF(@Valid @PathVariable String cpf) {
-        return ResponseEntity
-                .ok(jobAplicationService.listJobApplicationsCandidateName(cpf).stream().map(x -> jobApplicationMapper.entityToDto(x)).collect(Collectors.toList()));
-    }
+	@GetMapping(value = "filtered/jobAplication/{cpf}")
+	public ResponseEntity<List<JobApplicationResponse>> filterJobAplicationsByCPF(@Valid @PathVariable String cpf) {
+		return ResponseEntity.ok(jobAplicationService.listJobApplicationsCandidateName(cpf).stream()
+				.map(x -> jobApplicationMapper.entityToDto(x)).collect(Collectors.toList()));
+	}
 
-    @PostMapping
-    @Transactional
-    public ResponseEntity<CandidateResponse> post(@Valid @RequestBody CandidateRequest model,
-            UriComponentsBuilder uriComponentsBuilder) {
+	@PostMapping
+	@Transactional
+	public ResponseEntity<CandidateResponse> post(@Valid @RequestBody CandidateRequest model,
+			UriComponentsBuilder uriComponentsBuilder) {
 
-    	Candidate entity = service.create(mapper.DtoToEntity(model));
+		Candidate entity = service.create(mapper.requestToCandidate(model));
 
-        URI uri = uriComponentsBuilder.path("/users/{id}").buildAndExpand(entity.getId()).toUri();
+		URI uri = uriComponentsBuilder.path("/users/{id}").buildAndExpand(entity.getId()).toUri();
 
-        return ResponseEntity.created(uri).body(mapper.entityToDto(entity));
+		return ResponseEntity.created(uri).body(mapper.entityToDto(entity));
+	}
 
-    }
+	@PutMapping(value = "/{id}")
+	public ResponseEntity<CandidateResponse> put(@Valid @RequestBody CandidateRequest model, @PathVariable Integer id) {
 
-    @PutMapping(value = "/{id}")
-    public ResponseEntity<CandidateResponse> put(@Valid @RequestBody CandidateRequest model,
-            @PathVariable Integer id) {
+		return ResponseEntity.ok(mapper.entityToDto(service.update(mapper.requestToCandidate(model), id)));
+	}
 
-        return ResponseEntity.ok(mapper.entityToDto(service.update(mapper.DtoToEntity(model), id)));
-    }
-
-    @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Integer id) {
-
-        service.delete(id);
-
-        return ResponseEntity.ok().build();
-
-    }
+	@DeleteMapping(value = "/{id}")
+	public ResponseEntity<Void> delete(@PathVariable Integer id) {
+		service.delete(id);
+		return ResponseEntity.ok().build();
+	}
 }

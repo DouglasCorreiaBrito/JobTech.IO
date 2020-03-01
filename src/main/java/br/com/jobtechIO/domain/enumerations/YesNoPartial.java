@@ -2,15 +2,15 @@ package br.com.jobtechIO.domain.enumerations;
 
 public enum YesNoPartial {
 
-    YES("YES"), NO("NO"), PARTIAL("PARTIAL");
+	YES("YES"), NO("NO"), PARTIAL("PARTIAL");
 
-    private final String value;
+	private final String value;
 
-    YesNoPartial(String valueOption) {
-        value = valueOption;
-    }
+	YesNoPartial(String valueOption) {
+		value = valueOption;
+	}
 
-    public String getValor() {
-        return value;
-    }
+	public String getValor() {
+		return value;
+	}
 }

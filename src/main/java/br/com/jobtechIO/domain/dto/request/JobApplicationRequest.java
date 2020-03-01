@@ -14,14 +14,13 @@ import lombok.NoArgsConstructor;
 @Builder
 public class JobApplicationRequest {
 
+	@NotNull(message = "jobOpportunity is required")
+	public Integer idJobOpportunity;
 
-    @NotNull(message = "jobOpportunity is required")
-    public Integer idJobOpportunity;
+	@NotNull(message = "candidate is required")
+	public Integer idCandidate;
 
-    @NotNull(message = "candidate is required")
-    public Integer idCandidate;
-
-    @NotNull(message = "status is required")
-    private VacantStatus status;
+	@NotNull(message = "status is required")
+	private VacantStatus status;
 
 }

@@ -13,11 +13,11 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class DeficiencyCreateRequest  {
+public class DeficiencyCreateRequest {
 
-    @NotEmpty(message = "description is required")
-    @NotBlank(message = "description is not blank")
-    @Size(max = 200)
-    private String description;
+	@NotEmpty(message = "description is required")
+	@NotBlank(message = "description is not blank")
+	@Size(max = 200)
+	private String description;
 
 }

@@ -7,9 +7,6 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import br.com.jobtechIO.domain.entities.Company;
-import br.com.jobtechIO.domain.entities.Deficiency;
-import br.com.jobtechIO.domain.entities.Skill;
 import br.com.jobtechIO.domain.enumerations.ContractEnum;
 import br.com.jobtechIO.domain.enumerations.ExperienceEnum;
 import br.com.jobtechIO.domain.enumerations.JobOpportunityStatusEnum;
@@ -26,14 +23,15 @@ import lombok.NoArgsConstructor;
 public class JobOpportunityRequest {
 
 	@NotNull
-	private Company company;
+	private Integer companyId;
 
 	@NotEmpty(message = "title is required")
 	@NotBlank(message = "title is not blank")
 	@Size(max = 200)
 	private String title;
 
-	// TODO if description will be an HTML template, add a HTML parser to validate data integrity
+	// TODO if description will be an HTML template, add a HTML parser to validate
+	// data integrity
 	@NotEmpty(message = "description is required")
 	private String description;
 
@@ -46,9 +44,9 @@ public class JobOpportunityRequest {
 	@NotNull
 	private String benefits;
 
-	private List<Deficiency> deficiencies;
+	private List<Integer> deficiencies;
 
-	private List<Skill> skills;
+	private List<Integer> skills;
 
 	@NotEmpty(message = "office is required")
 	@Size(max = 200)

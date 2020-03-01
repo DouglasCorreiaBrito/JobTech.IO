@@ -1,16 +1,16 @@
 package br.com.jobtechIO.domain.enumerations;
 
-public enum JobOpportunityStatusEnum{
+public enum JobOpportunityStatusEnum {
 
-    OPEN("OPEN"), CLOSED("CLOSED");
+	OPEN("OPEN"), CLOSED("CLOSED");
 
-    private final String value;
+	private final String value;
 
-    JobOpportunityStatusEnum(String valueOption) {
-        value = valueOption;
-    }
+	JobOpportunityStatusEnum(String valueOption) {
+		value = valueOption;
+	}
 
-    public String getValor() {
-        return value;
-    }
+	public String getValor() {
+		return value;
+	}
 }

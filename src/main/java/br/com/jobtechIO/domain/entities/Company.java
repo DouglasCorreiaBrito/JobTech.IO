@@ -17,19 +17,19 @@ import lombok.Setter;
 @Entity
 public class Company extends BaseEntity {
 
-    @Column(nullable = false, length = 250)
-    private String name;
+	@Column(nullable = false, length = 250)
+	private String name;
 
-    @Column(nullable = false, length = 250)
-    private String telephone;
+	@Column(nullable = false, length = 250)
+	private String telephone;
 
-    @Column(nullable = false, length = 250)
-    private String email;
+	@Column(nullable = false, length = 250)
+	private String email;
 
-    @Column(nullable = false, length = 250)
-    private String address;
+	@Column(nullable = false, length = 250)
+	private String address;
 
-    @Column(nullable = false, length = 18)
-    private String cnpj;
+	@Column(nullable = false, length = 18)
+	private String cnpj;
 
 }

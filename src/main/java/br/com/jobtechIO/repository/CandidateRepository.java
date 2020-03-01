@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import br.com.jobtechIO.domain.entities.Candidate;
 
 @Repository
-public interface CandidateRepository extends JpaRepository<Candidate, Integer>{
+public interface CandidateRepository extends JpaRepository<Candidate, Integer> {
 
-    List<Candidate> findByName(String name);
+	List<Candidate> findByName(String name);
 }

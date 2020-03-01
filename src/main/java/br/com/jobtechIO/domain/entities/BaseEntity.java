@@ -14,13 +14,13 @@ import lombok.Data;
 @MappedSuperclass
 public abstract class BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    
-    @Column(columnDefinition = "DATE")
-    private LocalDate createdAt;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 
-    @Column(columnDefinition = "DATE")
-    private LocalDate updatedAt;
+	@Column(columnDefinition = "DATE")
+	private LocalDate createdAt;
+
+	@Column(columnDefinition = "DATE")
+	private LocalDate updatedAt;
 }
