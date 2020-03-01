@@ -9,20 +9,20 @@ import br.com.jobtechIO.domain.dto.response.CompanyResponse;
 import br.com.jobtechIO.domain.entities.Company;
 
 @Component
-public class CompanyMapper{
+public class CompanyMapper {
 
-    private final ModelMapper mapper;
+	private final ModelMapper mapper;
 
-    @Autowired
-    public CompanyMapper(ModelMapper mapper){
-        this.mapper = mapper;
-    }
+	@Autowired
+	public CompanyMapper(ModelMapper mapper) {
+		this.mapper = mapper;
+	}
 
-    public CompanyResponse entityToDto(Company entity){
-        return mapper.map(entity, CompanyResponse.class);
-    }
+	public CompanyResponse entityToDto(Company entity) {
+		return mapper.map(entity, CompanyResponse.class);
+	}
 
-    public Company DtoToEntity(CompanyRequest request){
-        return mapper.map(request, Company.class);
-    }
+	public Company DtoToEntity(CompanyRequest request) {
+		return mapper.map(request, Company.class);
+	}
 }

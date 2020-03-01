@@ -22,16 +22,11 @@ import lombok.Setter;
 @Entity
 public class Deficiency extends BaseEntity {
 
-    @JsonIgnore
-    @ManyToMany(fetch = FetchType.LAZY,
-            cascade = {
-                CascadeType.PERSIST,
-                CascadeType.MERGE
-            },
-            mappedBy = "deficiencies")
-    private List<JobOpportunity> jobOpportunities;
+	@JsonIgnore
+	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "deficiencies")
+	private List<JobOpportunity> jobOpportunities;
 
-    @Column(nullable = false, length = 250)
-    private String description;
+	@Column(nullable = false, length = 250)
+	private String description;
 
 }

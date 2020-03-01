@@ -23,31 +23,27 @@ import lombok.Setter;
 @Entity
 public class Candidate extends BaseEntity {
 
-    @Column(nullable = false, length = 250)
-    private String name;
+	@Column(nullable = false, length = 250)
+	private String name;
 
-    @Column(nullable = false, length = 250)
-    private String CPF;
+	@Column(nullable = false, length = 250)
+	private String CPF;
 
-    @Column(nullable = false, length = 250)
-    private String email;
+	@Column(nullable = false, length = 250)
+	private String email;
 
-    @Column(nullable = false, length = 250)
-    private String telephone;
+	@Column(nullable = false, length = 250)
+	private String telephone;
 
-    @Column(nullable = false, length = 250)
-    private String endereco;
+	@Column(nullable = false, length = 250)
+	private String endereco;
 
-    @Column(nullable = false)
-    private LocalDate birthdate;
+	@Column(nullable = false)
+	private LocalDate birthdate;
 
-    @ManyToMany(fetch = FetchType.LAZY,
-            cascade = {
-                CascadeType.MERGE
-            })
-    @JoinTable(name = "candidateSkill",
-            joinColumns = { @JoinColumn(name = "candidateId") },
-            inverseJoinColumns = { @JoinColumn(name = "skillId") })
-    private List<Skill> skills;
+	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.MERGE })
+	@JoinTable(name = "candidateSkill", joinColumns = { @JoinColumn(name = "candidateId") }, inverseJoinColumns = {
+			@JoinColumn(name = "skillId") })
+	private List<Skill> skills;
 
 }

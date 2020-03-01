@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import br.com.jobtechIO.domain.entities.Skill;
 
 @Repository
-public interface SkillRepository extends JpaRepository<Skill, Integer>{
+public interface SkillRepository extends JpaRepository<Skill, Integer> {
 
-    List<Skill> findByDescription(String name);
+	List<Skill> findByDescription(String name);
 }

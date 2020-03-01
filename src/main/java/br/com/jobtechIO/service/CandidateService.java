@@ -14,50 +14,51 @@ import br.com.jobtechIO.repository.CandidateRepository;
 @Service
 public class CandidateService {
 
-    private final CandidateRepository repository;
+	private final CandidateRepository repository;
 
-    @Autowired
-    public CandidateService(CandidateRepository repository) {
-        this.repository = repository;
-    }
+	@Autowired
+	public CandidateService(CandidateRepository repository) {
+		this.repository = repository;
+	}
 
-    public List<Candidate> listAllCandidates() {
-        return repository.findAll();
-    }
+	public List<Candidate> listAllCandidates() {
+		return repository.findAll();
+	}
 
-    public Candidate getById(Integer id)   {
-        Optional<Candidate> cOptional = repository.findById(id);
-        return cOptional.orElseThrow(() -> new GenericNotFoundException("Candidate not found"));
-    }
+	public Candidate getById(Integer id) {
+		Optional<Candidate> cOptional = repository.findById(id);
+		return cOptional.orElseThrow(() -> new GenericNotFoundException("Candidate not found"));
+	}
 
-    public List<Candidate> listByName(String name) {
-        return repository.findByName(name);
-    }
+	public List<Candidate> listByName(String name) {
+		return repository.findByName(name);
+	}
 
-    public Candidate create(Candidate entity) {
-        entity.setCreatedAt(LocalDate.now());
-        return repository.save(entity);
-    }
+	public Candidate create(Candidate entity) {
+		entity.setCreatedAt(LocalDate.now());
+		entity.setUpdatedAt(LocalDate.now());
+		return repository.save(entity);
+	}
 
-    public void delete(Integer id)   {
-        repository.delete(getById(id));
-    }
+	public void delete(Integer id) {
+		repository.delete(getById(id));
+	}
 
-    public Candidate update(Candidate entity, Integer id)  {
+	public Candidate update(Candidate entity, Integer id) {
 
-    	Candidate candidate = getById(id);
+		Candidate candidate = getById(id);
 
-    	candidate.setId(id);
-    	candidate.setName(entity.getName());
-    	candidate.setCPF(entity.getCPF());
-    	candidate.setEmail(entity.getEmail());
-    	candidate.setEndereco(entity.getEndereco());
-    	candidate.setSkills(entity.getSkills());
-    	candidate.setEmail(entity.getEmail());
-    	candidate.setBirthdate(entity.getBirthdate());
-    	candidate.setTelephone(entity.getTelephone());
-    	candidate.setUpdatedAt(LocalDate.now());
+		candidate.setId(id);
+		candidate.setName(entity.getName());
+		candidate.setCPF(entity.getCPF());
+		candidate.setEmail(entity.getEmail());
+		candidate.setEndereco(entity.getEndereco());
+		candidate.setSkills(entity.getSkills());
+		candidate.setEmail(entity.getEmail());
+		candidate.setBirthdate(entity.getBirthdate());
+		candidate.setTelephone(entity.getTelephone());
+		candidate.setUpdatedAt(LocalDate.now());
 
-        return repository.save(candidate);
-    }
+		return repository.save(candidate);
+	}
 }

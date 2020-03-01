@@ -13,38 +13,38 @@ import br.com.jobtechIO.service.CandidateService;
 import br.com.jobtechIO.service.JobOpportunityService;
 
 @Component
-public class JobApplicationMapper{
+public class JobApplicationMapper {
 
-    private final ModelMapper mapper;
-    private final CandidateService candidateService;
-    private final JobOpportunityService jobOportunityService;
+	private final ModelMapper mapper;
+	private final CandidateService candidateService;
+	private final JobOpportunityService jobOportunityService;
 
-    @Autowired
-    public JobApplicationMapper(ModelMapper mapper, CandidateService candidateService,JobOpportunityService jobOportunityService){
-        this.mapper = mapper;
-        this.candidateService = candidateService;
-        this.jobOportunityService = jobOportunityService;
-    }
+	@Autowired
+	public JobApplicationMapper(ModelMapper mapper, CandidateService candidateService,
+			JobOpportunityService jobOportunityService) {
+		this.mapper = mapper;
+		this.candidateService = candidateService;
+		this.jobOportunityService = jobOportunityService;
+	}
 
-    public JobApplicationResponse entityToDto(JobApplication entity){
-        
-        return mapper.map(entity, JobApplicationResponse.class);
-    }
+	public JobApplicationResponse entityToDto(JobApplication entity) {
 
-    public JobApplication dtoToEntity(JobApplicationResponse request){
-        return mapper.map(request, JobApplication.class);
-    }
+		return mapper.map(entity, JobApplicationResponse.class);
+	}
 
-    public JobApplication requestToEntity(JobApplicationRequest request){
+	public JobApplication dtoToEntity(JobApplicationResponse request) {
+		return mapper.map(request, JobApplication.class);
+	}
 
-        JobApplication jobApplication = mapper.map(request, JobApplication.class);
+	public JobApplication requestToEntity(JobApplicationRequest request) {
+		JobApplication jobApplication = mapper.map(request, JobApplication.class);
 
-        JobOpportunity jobOpportunity = jobOportunityService.getById(request.getIdJobOpportunity());
-        Candidate candidate = candidateService.getById(request.getIdCandidate());
+		JobOpportunity jobOpportunity = jobOportunityService.getById(request.getIdJobOpportunity());
+		Candidate candidate = candidateService.getById(request.getIdCandidate());
 
-        jobApplication.setCandidate(candidate);
-        jobApplication.setJobOpportunity(jobOpportunity);
+		jobApplication.setCandidate(candidate);
+		jobApplication.setJobOpportunity(jobOpportunity);
 
-        return jobApplication;
-    }
+		return jobApplication;
+	}
 }

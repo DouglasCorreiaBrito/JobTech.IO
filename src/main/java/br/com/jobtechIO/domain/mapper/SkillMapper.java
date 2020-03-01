@@ -9,20 +9,20 @@ import br.com.jobtechIO.domain.dto.response.SkillResponse;
 import br.com.jobtechIO.domain.entities.Skill;
 
 @Component
-public class SkillMapper{
+public class SkillMapper {
 
-    private final ModelMapper mapper;
+	private final ModelMapper mapper;
 
-    @Autowired
-    public SkillMapper(ModelMapper mapper){
-        this.mapper = mapper;
-    }
+	@Autowired
+	public SkillMapper(ModelMapper mapper) {
+		this.mapper = mapper;
+	}
 
-    public SkillResponse entityToDto(Skill entity){
-        return mapper.map(entity, SkillResponse.class);
-    }
+	public SkillResponse entityToDto(Skill entity) {
+		return mapper.map(entity, SkillResponse.class);
+	}
 
-    public Skill DtoToEntity(SkillRequest request){
-        return mapper.map(request, Skill.class);
-    }
+	public Skill DtoToEntity(SkillRequest request) {
+		return mapper.map(request, Skill.class);
+	}
 }

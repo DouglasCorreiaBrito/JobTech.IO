@@ -1,16 +1,16 @@
 package br.com.jobtechIO.domain.enumerations;
 
-public enum VacantStatus{
+public enum VacantStatus {
 
-    APPLIED(1), CANCELED(2);
+	APPLIED(1), CANCELED(2);
 
-    private final int value;
+	private final int value;
 
-    VacantStatus(int valueOption) {
-        value = valueOption;
-    }
+	VacantStatus(int valueOption) {
+		value = valueOption;
+	}
 
-    public int getValor() {
-        return value;
-    }
+	public int getValor() {
+		return value;
+	}
 }

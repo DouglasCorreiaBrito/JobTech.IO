@@ -9,20 +9,20 @@ import br.com.jobtechIO.domain.dto.response.DeficiencyResponse;
 import br.com.jobtechIO.domain.entities.Deficiency;
 
 @Component
-public class DeficiencyMapper{
+public class DeficiencyMapper {
 
-    private final ModelMapper mapper;
+	private final ModelMapper mapper;
 
-    @Autowired
-    public DeficiencyMapper(ModelMapper mapper){
-        this.mapper = mapper;
-    }
+	@Autowired
+	public DeficiencyMapper(ModelMapper mapper) {
+		this.mapper = mapper;
+	}
 
-    public DeficiencyResponse entityToDto(Deficiency entity){
-        return mapper.map(entity, DeficiencyResponse.class);
-    }
+	public DeficiencyResponse entityToDto(Deficiency entity) {
+		return mapper.map(entity, DeficiencyResponse.class);
+	}
 
-    public Deficiency DtoToEntity(DeficiencyCreateRequest request){
-        return mapper.map(request, Deficiency.class);
-    }
+	public Deficiency DtoToEntity(DeficiencyCreateRequest request) {
+		return mapper.map(request, Deficiency.class);
+	}
 }

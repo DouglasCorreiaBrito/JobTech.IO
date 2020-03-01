@@ -14,12 +14,12 @@ import lombok.NoArgsConstructor;
 @Builder
 public class JobApplicationResponse {
 
-    public Integer id;
+	public Integer id;
 
-    public JobOpportunity jobOpportunity;
-    
-    public Candidate candidate;
+	public JobOpportunity jobOpportunity;
 
-    private VacantStatus status;
+	public Candidate candidate;
+
+	private VacantStatus status;
 
 }

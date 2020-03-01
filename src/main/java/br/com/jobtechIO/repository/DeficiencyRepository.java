@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import br.com.jobtechIO.domain.entities.Deficiency;
 
 @Repository
-public interface DeficiencyRepository extends JpaRepository<Deficiency, Integer>{
+public interface DeficiencyRepository extends JpaRepository<Deficiency, Integer> {
 
-    List<Deficiency> findByDescription(String description);
+	List<Deficiency> findByDescription(String description);
 }

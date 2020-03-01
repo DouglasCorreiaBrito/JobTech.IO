@@ -9,10 +9,9 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class DeficiencyResponse  {
+public class DeficiencyResponse {
 
-
-    private Integer id;
-    private String description;
+	private Integer id;
+	private String description;
 
 }

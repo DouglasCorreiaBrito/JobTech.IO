@@ -28,51 +28,51 @@ import br.com.jobtechIO.service.JobAplicationService;
 @RequestMapping("/jobAplication")
 public class JobAplicationController {
 
-    private final JobAplicationService service;
-    private final JobApplicationMapper mapper;
+	private final JobAplicationService service;
+	private final JobApplicationMapper mapper;
 
-    public JobAplicationController(JobAplicationService service, JobApplicationMapper mapper) {
-        this.service = service;
-        this.mapper = mapper;
-    }
+	public JobAplicationController(JobAplicationService service, JobApplicationMapper mapper) {
+		this.service = service;
+		this.mapper = mapper;
+	}
 
-    @GetMapping(value = "/{id}")
-    public ResponseEntity<JobApplicationResponse> getById(@PathVariable Integer id) {
-        return ResponseEntity.ok(mapper.entityToDto(service.getById(id)));
-    }
+	@GetMapping(value = "/{id}")
+	public ResponseEntity<JobApplicationResponse> getById(@PathVariable Integer id) {
+		return ResponseEntity.ok(mapper.entityToDto(service.getById(id)));
+	}
 
-    @GetMapping
-    public ResponseEntity<List<JobApplicationResponse>> getAll() {
-        return ResponseEntity
-                .ok(service.listAllJobApplications().stream().map(x -> mapper.entityToDto(x)).collect(Collectors.toList()));
-    }
+	@GetMapping
+	public ResponseEntity<List<JobApplicationResponse>> getAll() {
+		return ResponseEntity.ok(
+				service.listAllJobApplications().stream().map(x -> mapper.entityToDto(x)).collect(Collectors.toList()));
+	}
 
-    @PostMapping
-    @Transactional
-    public ResponseEntity<JobApplicationResponse> post(@Valid @RequestBody JobApplicationRequest model,
-            UriComponentsBuilder uriComponentsBuilder) {
+	@PostMapping
+	@Transactional
+	public ResponseEntity<JobApplicationResponse> post(@Valid @RequestBody JobApplicationRequest model,
+			UriComponentsBuilder uriComponentsBuilder) {
 
-        JobApplication entity = service.create(mapper.requestToEntity(model));
+		JobApplication entity = service.create(mapper.requestToEntity(model));
 
-        URI uri = uriComponentsBuilder.path("/jobAplication/{id}").buildAndExpand(entity.getId()).toUri();
+		URI uri = uriComponentsBuilder.path("/jobAplication/{id}").buildAndExpand(entity.getId()).toUri();
 
-        return ResponseEntity.created(uri).body(mapper.entityToDto(entity));
+		return ResponseEntity.created(uri).body(mapper.entityToDto(entity));
 
-    }
+	}
 
-    @PutMapping(value = "/{id}")
-    public ResponseEntity<JobApplicationResponse> put(@Valid @RequestBody JobApplicationRequest model,
-            @PathVariable Integer id) {
+	@PutMapping(value = "/{id}")
+	public ResponseEntity<JobApplicationResponse> put(@Valid @RequestBody JobApplicationRequest model,
+			@PathVariable Integer id) {
 
-        return ResponseEntity.ok(mapper.entityToDto(service.update(mapper.requestToEntity(model), id)));
-    }
+		return ResponseEntity.ok(mapper.entityToDto(service.update(mapper.requestToEntity(model), id)));
+	}
 
-    @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Integer id) {
+	@DeleteMapping(value = "/{id}")
+	public ResponseEntity<Void> delete(@PathVariable Integer id) {
 
-        service.delete(id);
+		service.delete(id);
 
-        return ResponseEntity.ok().build();
+		return ResponseEntity.ok().build();
 
-    }
+	}
 }
