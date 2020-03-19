@@ -1,0 +1,1 @@
+INSERT INTO `Company` (`id`, `address`, `cnpj`, `email`, `name`, `telephone`) VALUES ('1','string', 'string', 'string', 'string', 'string');

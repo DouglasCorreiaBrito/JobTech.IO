@@ -15,16 +15,14 @@ import br.com.jobtechIO.domain.enumerations.ContractEnum;
 import br.com.jobtechIO.domain.enumerations.ExperienceEnum;
 import br.com.jobtechIO.domain.enumerations.JobOpportunityStatusEnum;
 import br.com.jobtechIO.domain.enumerations.YesNoPartial;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Builder
 public class JobOpportunity extends BaseEntity {
 
 	@ManyToOne
