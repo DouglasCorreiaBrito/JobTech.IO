@@ -25,7 +25,7 @@ import br.com.jobtechIO.domain.mapper.JobOpportunityMapper;
 import br.com.jobtechIO.service.JobOpportunityService;
 
 @RestController
-@RequestMapping("/job-opportunity")
+@RequestMapping("/jobs")
 public class JobOpportunityController {
 
 	private final JobOpportunityService service;

@@ -9,15 +9,15 @@ import org.springframework.stereotype.Service;
 
 import br.com.jobtechIO.domain.entities.JobApplication;
 import br.com.jobtechIO.exceptions.GenericNotFoundException;
-import br.com.jobtechIO.repository.JobAplicationRepository;
+import br.com.jobtechIO.repository.JobApplicationRepository;
 
 @Service
-public class JobAplicationService {
+public class JobApplicationService {
 
-	private final JobAplicationRepository repository;
+	private final JobApplicationRepository repository;
 
 	@Autowired
-	public JobAplicationService(JobAplicationRepository repository) {
+	public JobApplicationService(JobApplicationRepository repository) {
 		this.repository = repository;
 	}
 

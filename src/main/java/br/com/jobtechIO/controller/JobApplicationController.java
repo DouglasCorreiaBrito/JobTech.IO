@@ -22,16 +22,16 @@ import br.com.jobtechIO.domain.dto.request.JobApplicationRequest;
 import br.com.jobtechIO.domain.dto.response.JobApplicationResponse;
 import br.com.jobtechIO.domain.entities.JobApplication;
 import br.com.jobtechIO.domain.mapper.JobApplicationMapper;
-import br.com.jobtechIO.service.JobAplicationService;
+import br.com.jobtechIO.service.JobApplicationService;
 
 @RestController
-@RequestMapping("/jobAplication")
-public class JobAplicationController {
+@RequestMapping("/job-application")
+public class JobApplicationController {
 
-	private final JobAplicationService service;
+	private final JobApplicationService service;
 	private final JobApplicationMapper mapper;
 
-	public JobAplicationController(JobAplicationService service, JobApplicationMapper mapper) {
+	public JobApplicationController(JobApplicationService service, JobApplicationMapper mapper) {
 		this.service = service;
 		this.mapper = mapper;
 	}
@@ -47,6 +47,18 @@ public class JobAplicationController {
 				service.listAllJobApplications().stream().map(x -> mapper.entityToDto(x)).collect(Collectors.toList()));
 	}
 
+	@GetMapping(value = "find-candidate/candidate-name/{name}")
+	public ResponseEntity<List<JobApplicationResponse>> filterJobApplicationsByName(@Valid @PathVariable String name) {
+		return ResponseEntity.ok(service.listJobApplicationsCandidateName(name).stream()
+				.map(x -> mapper.entityToDto(x)).collect(Collectors.toList()));
+	}
+
+	@GetMapping(value = "find-candidate/candidate-cpf/{cpf}")
+	public ResponseEntity<List<JobApplicationResponse>> filterJobApplicationsByCPF(@Valid @PathVariable String cpf) {
+		return ResponseEntity.ok(service.listJobApplicationsCandidateName(cpf).stream()
+				.map(x -> mapper.entityToDto(x)).collect(Collectors.toList()));
+	}
+
 	@PostMapping
 	@Transactional
 	public ResponseEntity<JobApplicationResponse> post(@Valid @RequestBody JobApplicationRequest model,
@@ -54,7 +66,7 @@ public class JobAplicationController {
 
 		JobApplication entity = service.create(mapper.requestToEntity(model));
 
-		URI uri = uriComponentsBuilder.path("/jobAplication/{id}").buildAndExpand(entity.getId()).toUri();
+		URI uri = uriComponentsBuilder.path("/job-application/{id}").buildAndExpand(entity.getId()).toUri();
 
 		return ResponseEntity.created(uri).body(mapper.entityToDto(entity));
 

@@ -2,15 +2,12 @@ package br.com.jobtechIO.steps;
 
 import br.com.jobtechIO.domain.dto.request.JobOpportunityRequest;
 import br.com.jobtechIO.domain.dto.response.JobOpportunityResponse;
-import br.com.jobtechIO.domain.entities.Company;
 import br.com.jobtechIO.domain.enumerations.ContractEnum;
 import br.com.jobtechIO.domain.enumerations.ExperienceEnum;
 import br.com.jobtechIO.domain.enumerations.JobOpportunityStatusEnum;
 import br.com.jobtechIO.domain.enumerations.YesNoPartial;
-import br.com.jobtechIO.service.JobOpportunityService;
 import br.com.jobtechIO.utils.IntegrationTestConfig;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
@@ -24,7 +21,6 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
@@ -36,7 +32,7 @@ import java.util.ArrayList;
 @TestPropertySource(locations = IntegrationTestConfig.appProperties)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
-public class MakeApplicationStep {
+public class CreateJobStep {
 
 
     @Autowired
@@ -46,13 +42,13 @@ public class MakeApplicationStep {
     @Autowired
     private ObjectMapper mapper;
 
-    @When("the client made a post to /jobOpportunity")
+    @When("the company made a post to /jobs")
     public void the_client_made_a_post() throws Exception {
 
-        mockMvc.perform(MockMvcRequestBuilders.post("/job-opportunity"));
+        mockMvc.perform(MockMvcRequestBuilders.post("/jobs"));
     }
 
-    @Then("the client receives status code of created")
+    @Then("the company receives status code 201")
     public void client_receives_status_code() throws Exception {
 
 
@@ -71,12 +67,12 @@ public class MakeApplicationStep {
                 .title("string to match")
                 .typeOfContract(ContractEnum.CLT).build();
 
-        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/job-opportunity") //
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/jobs") //
                 .contentType(MediaType.APPLICATION_JSON) //
                 .content(mapper.writeValueAsString(request))) // Executa
                 .andDo(MockMvcResultHandlers.print()) // pega resultado
                 .andExpect(MockMvcResultMatchers.status().isCreated())
-                .andExpect(MockMvcResultMatchers.redirectedUrl("http://localhost/jobs/1"))
+                .andExpect(MockMvcResultMatchers.redirectedUrl("http://localhost/jobs/2"))
                 .andReturn(); // faz a validação.
 
 
