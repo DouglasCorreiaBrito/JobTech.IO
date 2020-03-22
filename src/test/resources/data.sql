@@ -3,4 +3,4 @@ INSERT INTO `Candidate` (`id`, `createdAt`, `updatedAt`, `CPF`, `birthdate`, `em
 INSERT INTO `Deficiency` (`id`, `createdAt`, `updatedAt`, `description`) VALUES ('1', '2020-01-01', '2020-01-01', 'string');
 INSERT INTO `JobOpportunity` (`id`, `createdAt`, `updatedAt`, `benefits`, `description`, `location`, `minimumWage`, `office`, `remote`, `seniority`, `status`, `title`, `typeOfContract`, `idcompany`) VALUES ('1', '2020-02-02', '2020-02-02', 'string', 'string', 'string', '18', 'string', '0', '0', '0', 'string', '0', '1');
 INSERT INTO `Skill` (`id`, `createdAt`, `updatedAt`, `description`) VALUES ('1', '2020-02-02', '2020-02-02', 'string');
-INSERT INTO `JobApplication` (`id`, `createdAt`, `updatedAt`, `status`, `idCandidate`, `idjobOpportunity`) VALUES ('1', '2020-02-02', '2020-02-02', 'Aplied', '1', '1');
+INSERT INTO `JobApplication` (`id`, `createdAt`, `updatedAt`, `status`, `idCandidate`, `idjobOpportunity`) VALUES ('1', '2020-02-02', '2020-02-02', 'APPLIED', '1', '1');
