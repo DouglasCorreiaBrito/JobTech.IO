@@ -6,6 +6,8 @@ import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -26,6 +28,7 @@ import br.com.jobtechIO.service.JobOpportunityService;
 
 @RestController
 @RequestMapping("/jobs")
+@Api(tags = { " Opportunities " }, value = "end-point to manage job opportunities")
 public class JobOpportunityController {
 
 	private final JobOpportunityService service;
@@ -36,23 +39,27 @@ public class JobOpportunityController {
 		this.mapper = mapper;
 	}
 
+	@ApiOperation(value = "filter opportunity by id")
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<JobOpportunityResponse> getById(@PathVariable Integer id) {
 		return ResponseEntity.ok(mapper.entityToDto(service.getById(id)));
 	}
 
+	@ApiOperation(value = "list all opportunities")
 	@GetMapping
 	public ResponseEntity<List<JobOpportunityResponse>> getAll() {
 		return ResponseEntity.ok(service.listAllJobOpportunities().stream().map(x -> mapper.entityToDto(x))
 				.collect(Collectors.toList()));
 	}
 
+	@ApiOperation(value = "filter opportunity by title")
 	@GetMapping(value = "filtered/{title}")
 	public ResponseEntity<List<JobOpportunityResponse>> filterByTitle(@Valid @PathVariable String title) {
 		return ResponseEntity
 				.ok(service.listByTitle(title).stream().map(x -> mapper.entityToDto(x)).collect(Collectors.toList()));
 	}
 
+	@ApiOperation(value = "create opportunity")
 	@PostMapping
 	@Transactional
 	public ResponseEntity<JobOpportunityResponse> post(@Valid @RequestBody JobOpportunityRequest model,
@@ -66,6 +73,7 @@ public class JobOpportunityController {
 
 	}
 
+	@ApiOperation(value = "update opportunity")
 	@PutMapping(value = "/{id}")
 	public ResponseEntity<JobOpportunityResponse> put(@Valid @RequestBody JobOpportunityRequest model,
 			@PathVariable Integer id) {
@@ -73,6 +81,7 @@ public class JobOpportunityController {
 		return ResponseEntity.ok(mapper.entityToDto(service.update(mapper.requestToEntity(model), id)));
 	}
 
+	@ApiOperation(value = "delete opportunity")
 	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<Void> delete(@PathVariable Integer id) {
 		service.delete(id);
