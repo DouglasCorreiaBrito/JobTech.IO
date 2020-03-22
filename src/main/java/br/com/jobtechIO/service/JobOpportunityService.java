@@ -30,8 +30,8 @@ public class JobOpportunityService {
 		return cOptional.orElseThrow(() -> new GenericNotFoundException("Job Opportunity not found"));
 	}
 
-	public List<JobOpportunity> listByTitle(String name) {
-		return repository.findByTitle(name);
+	public List<JobOpportunity> listByTitle(String title) {
+		return repository.findByTitleContainingIgnoreCase(title);
 	}
 
 	public JobOpportunity create(JobOpportunity entity) {

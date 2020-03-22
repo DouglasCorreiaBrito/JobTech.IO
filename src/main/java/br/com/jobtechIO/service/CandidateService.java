@@ -31,7 +31,7 @@ public class CandidateService {
 	}
 
 	public List<Candidate> listByName(String name) {
-		return repository.findByName(name);
+		return repository.findByNameContainingIgnoreCase(name);
 	}
 
 	public Candidate create(Candidate entity) {
