@@ -59,11 +59,18 @@ public class JobOpportunityController {
 				.ok(service.listByTitle(title).stream().map(x -> mapper.entityToDto(x)).collect(Collectors.toList()));
 	}
 
+	@ApiOperation(value = "filter opportunity by contract")
+	@GetMapping(value = "filtered/contract/{contract}")
+	public ResponseEntity<List<JobOpportunityResponse>> filterByContract(@Valid @PathVariable String contract) {
+		return ResponseEntity
+				.ok(service.listByContract(contract).stream().map(x -> mapper.entityToDto(x)).collect(Collectors.toList()));
+	}
+
 	@ApiOperation(value = "create opportunity")
 	@PostMapping
 	@Transactional
 	public ResponseEntity<JobOpportunityResponse> post(@Valid @RequestBody JobOpportunityRequest model,
-			UriComponentsBuilder uriComponentsBuilder) {
+			UriComponentsBuilder uriComponentsBuilder)  {
 
 		JobOpportunity entity = service.create(mapper.requestToEntity(model));
 

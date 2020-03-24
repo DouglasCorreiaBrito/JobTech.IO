@@ -1,9 +1,13 @@
 package br.com.jobtechIO.service;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+import br.com.jobtechIO.domain.enumerations.JobOpportunityStatusEnum;
+import br.com.jobtechIO.domain.enumerations.VacantStatus;
+import br.com.jobtechIO.exceptions.GenericBadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,10 +38,14 @@ public class JobOpportunityService {
 		return repository.findByTitleContainingIgnoreCase(title);
 	}
 
-	public JobOpportunity create(JobOpportunity entity) {
-		entity.setCreatedAt(LocalDate.now());
-		entity.setUpdatedAt(LocalDate.now());
-		return repository.save(entity);
+	public JobOpportunity create(JobOpportunity entity){
+		if (entity.getStatus() == JobOpportunityStatusEnum.OPEN){
+			entity.setCreatedAt(LocalDate.now());
+			entity.setUpdatedAt(LocalDate.now());
+			return repository.save(entity);
+		}
+		throw new GenericBadRequestException("Invalid status. Expected Open");
+
 	}
 
 	public void delete(Integer id) {
@@ -64,5 +72,9 @@ public class JobOpportunityService {
 		jobOpportunity.setUpdatedAt(LocalDate.now());
 
 		return repository.save(jobOpportunity);
+	}
+
+	public List<JobOpportunity> listByContract(String contract) {
+		return repository.findByTypeOfContract(contract);
 	}
 }

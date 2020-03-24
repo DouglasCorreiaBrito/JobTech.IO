@@ -34,7 +34,7 @@ public class Candidate extends BaseEntity {
 	private String telephone;
 
 	@Column(nullable = false, length = 250)
-	private String endereco;
+	private String address;
 
 	@Column(nullable = false)
 	private LocalDate birthdate;

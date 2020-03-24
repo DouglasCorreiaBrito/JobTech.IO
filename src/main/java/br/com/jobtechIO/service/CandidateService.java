@@ -52,7 +52,7 @@ public class CandidateService {
 		candidate.setName(entity.getName());
 		candidate.setCPF(entity.getCPF());
 		candidate.setEmail(entity.getEmail());
-		candidate.setEndereco(entity.getEndereco());
+		candidate.setAddress(entity.getAddress());
 		candidate.setSkills(entity.getSkills());
 		candidate.setEmail(entity.getEmail());
 		candidate.setBirthdate(entity.getBirthdate());

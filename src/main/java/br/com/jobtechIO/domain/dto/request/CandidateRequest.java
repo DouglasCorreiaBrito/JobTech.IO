@@ -40,11 +40,10 @@ public class CandidateRequest {
 	private String telephone;
 
 	@NotNull
-	@NotBlank(message = "endereco is required")
+	@NotBlank(message = "address is required")
 	private String address;
 
 	@NotNull
-	@LocalDateValidate
 	private LocalDate birthdate;
 
 	private List<Integer> skills;
