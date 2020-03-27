@@ -18,4 +18,6 @@ public interface JobApplicationRepository extends JpaRepository<JobApplication, 
 
 	List<JobApplication> findByCandidate_CPF(String cpf);
 
+	List<JobApplication> findByJobOpportunity_Company_id(Integer id);
+
 }

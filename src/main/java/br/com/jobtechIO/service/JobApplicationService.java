@@ -1,15 +1,16 @@
 package br.com.jobtechIO.service;
 
-import java.time.LocalDate;
-import java.util.List;
-import java.util.Optional;
-
+import br.com.jobtechIO.domain.entities.JobApplication;
+import br.com.jobtechIO.domain.enumerations.VacantStatus;
+import br.com.jobtechIO.exceptions.GenericBadRequestException;
+import br.com.jobtechIO.exceptions.GenericNotFoundException;
+import br.com.jobtechIO.repository.JobApplicationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.jobtechIO.domain.entities.JobApplication;
-import br.com.jobtechIO.exceptions.GenericNotFoundException;
-import br.com.jobtechIO.repository.JobApplicationRepository;
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class JobApplicationService {
@@ -31,7 +32,12 @@ public class JobApplicationService {
 	}
 
 	public List<JobApplication> listJobOportunity(Integer idOportunity) {
+
 		return repository.findByJobOpportunity_id(idOportunity);
+	}
+
+	public List<JobApplication> listApplicationsByCompany(Integer idCompany) {
+		return repository.findByJobOpportunity_Company_id(idCompany);
 	}
 
 	public List<JobApplication> listJobApplicationsCandidateName(String name) {
@@ -47,9 +53,14 @@ public class JobApplicationService {
 	}
 
 	public JobApplication create(JobApplication entity) {
-		entity.setCreatedAt(LocalDate.now());
-		entity.setUpdatedAt(LocalDate.now());
-		return repository.save(entity);
+
+		if (entity.getStatus() == VacantStatus.APPLIED){
+
+			entity.setCreatedAt(LocalDate.now());
+			entity.setUpdatedAt(LocalDate.now());
+			return repository.save(entity);
+		}
+		throw new GenericBadRequestException("Invalid status. Expected APPLIED");
 	}
 
 	public void delete(Integer id) {
