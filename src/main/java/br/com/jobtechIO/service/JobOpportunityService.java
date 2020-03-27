@@ -1,6 +1,7 @@
 package br.com.jobtechIO.service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -36,6 +37,21 @@ public class JobOpportunityService {
 
 	public List<JobOpportunity> listByTitle(String title) {
 		return repository.findByTitleContainingIgnoreCase(title);
+	}
+
+	public List<JobOpportunity> listByLocation(String location) {
+		return repository.findByLocationContainingIgnoreCase(location);
+	}
+
+	public List<JobOpportunity> listWithAllFilters(String location, String title, String contract) {
+		if (location == null) location = "";
+		if (title == null) title = "";
+		if (contract == null) contract = "";
+		return repository.findWithComboFilter(location, title, contract);
+	}
+
+	public long getTotalJobsPublished() {
+		return repository.count();
 	}
 
 	public JobOpportunity create(JobOpportunity entity){

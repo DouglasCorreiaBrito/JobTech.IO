@@ -6,18 +6,12 @@ import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
+import br.com.jobtechIO.domain.dto.response.TotalJobsPublishedResponse;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import br.com.jobtechIO.domain.dto.request.JobOpportunityRequest;
@@ -63,7 +57,28 @@ public class JobOpportunityController {
 	@GetMapping(value = "filtered/contract/{contract}")
 	public ResponseEntity<List<JobOpportunityResponse>> filterByContract(@Valid @PathVariable String contract) {
 		return ResponseEntity
-				.ok(service.listByContract(contract).stream().map(x -> mapper.entityToDto(x)).collect(Collectors.toList()));
+				.ok(service.listByContract(contract).stream().map(mapper::entityToDto).collect(Collectors.toList()));
+	}
+
+	@ApiOperation(value = "filter opportunity by location")
+	@GetMapping(value = "filtered/location/{location}")
+	public ResponseEntity<List<JobOpportunityResponse>> filterByLocation(@Valid @PathVariable String location) {
+		return ResponseEntity
+				.ok(service.listByLocation(location).stream().map(mapper::entityToDto).collect(Collectors.toList()));
+	}
+
+	@ApiOperation(value = "filter opportunity with all filters")
+	@GetMapping(value = "filtered/all")
+	public ResponseEntity<List<JobOpportunityResponse>> filterWithAllFilters(@Valid @RequestParam String location, String title,String contract) {
+		return ResponseEntity
+				.ok(service.listWithAllFilters(location,title,contract).stream().map(x -> mapper.entityToDto(x)).collect(Collectors.toList()));
+	}
+
+	@ApiOperation(value = "get the total number of jobs published")
+	@GetMapping(value = "number-of-jobs/")
+	public ResponseEntity<TotalJobsPublishedResponse> getTotalJobsPublished() {
+
+		return ResponseEntity.ok(TotalJobsPublishedResponse.builder().totalJobsPublished(service.getTotalJobsPublished()).build());
 	}
 
 	@ApiOperation(value = "create opportunity")
