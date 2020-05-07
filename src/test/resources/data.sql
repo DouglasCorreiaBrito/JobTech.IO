@@ -1,6 +1,6 @@
 INSERT INTO `Company` (`id`, `address`, `cnpj`, `email`, `name`, `telephone`) VALUES ('1','string', 'string', 'string', 'string', 'string');
-INSERT INTO `Candidate` (`id`, `createdAt`, `updatedAt`, `CPF`, `birthdate`, `email`, `endereco`, `name`, `telephone`) VALUES ('1', '2018-08-08', '2018-08-08', '123', '2000-10-10', 'a@a', 'string', 'string', '40028922');
+INSERT INTO `Candidate` (`id`, `createdAt`, `updatedAt`, `CPF`, `birthdate`, `email`, `address`, `name`, `telephone`) VALUES ('1', '2018-08-08', '2018-08-08', '123', '2000-10-10', 'a@a', 'string', 'string', '40028922');
 INSERT INTO `Deficiency` (`id`, `createdAt`, `updatedAt`, `description`) VALUES ('1', '2020-01-01', '2020-01-01', 'string');
-INSERT INTO `JobOpportunity` (`id`, `createdAt`, `updatedAt`, `benefits`, `description`, `location`, `minimumWage`, `office`, `remote`, `seniority`, `status`, `title`, `typeOfContract`, `idcompany`) VALUES ('1', '2020-02-02', '2020-02-02', 'string', 'string', 'string', '18', 'string', '0', '0', '0', 'string', '0', '1');
+INSERT INTO `JobOpportunity` (`id`, `createdAt`, `updatedAt`, `benefits`, `description`, `location`, `minimumWage`, `office`, `remote`, `seniority`, `status`, `title`, `typeOfContract`, `idcompany`) VALUES ('1', '2020-02-02', '2020-02-02', 'string', 'test', 'string', '18', 'string', 'YES', 'ENGINEER', 'OPEN', 'test', 'CLT', '1');
 INSERT INTO `Skill` (`id`, `createdAt`, `updatedAt`, `description`) VALUES ('1', '2020-02-02', '2020-02-02', 'string');
 INSERT INTO `JobApplication` (`id`, `createdAt`, `updatedAt`, `status`, `idCandidate`, `idjobOpportunity`) VALUES ('1', '2020-02-02', '2020-02-02', 'APPLIED', '1', '1');
