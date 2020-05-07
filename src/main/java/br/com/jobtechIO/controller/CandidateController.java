@@ -1,78 +1,59 @@
 package br.com.jobtechIO.controller;
 
+import br.com.jobtechIO.domain.dto.request.CandidateRequest;
+import br.com.jobtechIO.domain.dto.response.CandidateResponse;
+import br.com.jobtechIO.domain.entities.Candidate;
+import br.com.jobtechIO.domain.mapper.CandidateMapper;
+import br.com.jobtechIO.service.CandidateService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
+
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.validation.Valid;
-
-import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.util.UriComponentsBuilder;
-
-import br.com.jobtechIO.domain.dto.request.CandidateRequest;
-import br.com.jobtechIO.domain.dto.response.CandidateResponse;
-import br.com.jobtechIO.domain.dto.response.JobApplicationResponse;
-import br.com.jobtechIO.domain.entities.Candidate;
-import br.com.jobtechIO.domain.mapper.CandidateMapper;
-import br.com.jobtechIO.domain.mapper.JobApplicationMapper;
-import br.com.jobtechIO.service.CandidateService;
-import br.com.jobtechIO.service.JobAplicationService;
-
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/candidates")
+@Api(tags = { " Candidates " }, value = "end-point to manage candidates")
 public class CandidateController {
 
 	private final CandidateService service;
 	private final CandidateMapper mapper;
-	private final JobAplicationService jobAplicationService;
-	private final JobApplicationMapper jobApplicationMapper;
 
-	public CandidateController(CandidateService service, CandidateMapper mapper,
-			JobAplicationService jobAplicationService, JobApplicationMapper jobApplicationMapper) {
+
+	public CandidateController(CandidateService service, CandidateMapper mapper) {
 		this.service = service;
 		this.mapper = mapper;
-		this.jobAplicationService = jobAplicationService;
-		this.jobApplicationMapper = jobApplicationMapper;
+
 	}
 
+	@ApiOperation(value = "filter candidate by id")
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<CandidateResponse> getById(@PathVariable Integer id) {
 		return ResponseEntity.ok(mapper.entityToDto(service.getById(id)));
 	}
 
+	@ApiOperation(value = "list all candidates")
 	@GetMapping
 	public ResponseEntity<List<CandidateResponse>> getAll() {
 		return ResponseEntity
 				.ok(service.listAllCandidates().stream().map(x -> mapper.entityToDto(x)).collect(Collectors.toList()));
 	}
 
+	@ApiOperation(value = "filter candidates by name")
 	@GetMapping(value = "filtered/{name}")
 	public ResponseEntity<List<CandidateResponse>> filterByName(@Valid @PathVariable String name) {
 		return ResponseEntity
 				.ok(service.listByName(name).stream().map(x -> mapper.entityToDto(x)).collect(Collectors.toList()));
 	}
 
-	@GetMapping(value = "filtered/jobAplication/{name}")
-	public ResponseEntity<List<JobApplicationResponse>> filterJobAplicationsByName(@Valid @PathVariable String name) {
-		return ResponseEntity.ok(jobAplicationService.listJobApplicationsCandidateName(name).stream()
-				.map(x -> jobApplicationMapper.entityToDto(x)).collect(Collectors.toList()));
-	}
 
-	@GetMapping(value = "filtered/jobAplication/{cpf}")
-	public ResponseEntity<List<JobApplicationResponse>> filterJobAplicationsByCPF(@Valid @PathVariable String cpf) {
-		return ResponseEntity.ok(jobAplicationService.listJobApplicationsCandidateName(cpf).stream()
-				.map(x -> jobApplicationMapper.entityToDto(x)).collect(Collectors.toList()));
-	}
-
+	@ApiOperation(value = "create a candidate")
 	@PostMapping
 	@Transactional
 	public ResponseEntity<CandidateResponse> post(@Valid @RequestBody CandidateRequest model,
@@ -85,12 +66,14 @@ public class CandidateController {
 		return ResponseEntity.created(uri).body(mapper.entityToDto(entity));
 	}
 
+	@ApiOperation(value = "update a candidate")
 	@PutMapping(value = "/{id}")
 	public ResponseEntity<CandidateResponse> put(@Valid @RequestBody CandidateRequest model, @PathVariable Integer id) {
 
 		return ResponseEntity.ok(mapper.entityToDto(service.update(mapper.requestToCandidate(model), id)));
 	}
 
+	@ApiOperation(value = "delete a candidate")
 	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<Void> delete(@PathVariable Integer id) {
 		service.delete(id);

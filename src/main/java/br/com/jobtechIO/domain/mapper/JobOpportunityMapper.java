@@ -64,12 +64,16 @@ public class JobOpportunityMapper {
 	}
 	
 	private List<Deficiency> getDeficienciesModels(List<Integer> deficienciesIds) {
-		List<Deficiency> deficiencies = new ArrayList<Deficiency>();
-		
-		deficienciesIds.forEach(deficiencyId -> {
-			deficiencies.add(deficiencyService.getById(deficiencyId));
-		});
-		
-		return deficiencies;
+		if(deficienciesIds != null){
+
+			List<Deficiency> deficiencies = new ArrayList<Deficiency>();
+
+			deficienciesIds.forEach(deficiencyId -> {
+				deficiencies.add(deficiencyService.getById(deficiencyId));
+			});
+
+			return deficiencies;
+		}
+		return new ArrayList<Deficiency>();
 	}
 }

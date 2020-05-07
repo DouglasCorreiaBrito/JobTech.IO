@@ -1,9 +1,14 @@
 package br.com.jobtechIO.service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+import br.com.jobtechIO.domain.enumerations.JobOpportunityStatusEnum;
+import br.com.jobtechIO.domain.enumerations.VacantStatus;
+import br.com.jobtechIO.exceptions.GenericBadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,14 +35,33 @@ public class JobOpportunityService {
 		return cOptional.orElseThrow(() -> new GenericNotFoundException("Job Opportunity not found"));
 	}
 
-	public List<JobOpportunity> listByTitle(String name) {
-		return repository.findByTitle(name);
+	public List<JobOpportunity> listByTitle(String title) {
+		return repository.findByTitleContainingIgnoreCase(title);
 	}
 
-	public JobOpportunity create(JobOpportunity entity) {
-		entity.setCreatedAt(LocalDate.now());
-		entity.setUpdatedAt(LocalDate.now());
-		return repository.save(entity);
+	public List<JobOpportunity> listByLocation(String location) {
+		return repository.findByLocationContainingIgnoreCase(location);
+	}
+
+	public List<JobOpportunity> listWithAllFilters(String location, String title, String contract) {
+		if (location == null) location = "";
+		if (title == null) title = "";
+		if (contract == null) contract = "";
+		return repository.findWithComboFilter(location, title, contract);
+	}
+
+	public long getTotalJobsPublished() {
+		return repository.count();
+	}
+
+	public JobOpportunity create(JobOpportunity entity){
+		if (entity.getStatus() == JobOpportunityStatusEnum.OPEN){
+			entity.setCreatedAt(LocalDate.now());
+			entity.setUpdatedAt(LocalDate.now());
+			return repository.save(entity);
+		}
+		throw new GenericBadRequestException("Invalid status. Expected Open");
+
 	}
 
 	public void delete(Integer id) {
@@ -64,5 +88,9 @@ public class JobOpportunityService {
 		jobOpportunity.setUpdatedAt(LocalDate.now());
 
 		return repository.save(jobOpportunity);
+	}
+
+	public List<JobOpportunity> listByContract(String contract) {
+		return repository.findByTypeOfContract(contract);
 	}
 }

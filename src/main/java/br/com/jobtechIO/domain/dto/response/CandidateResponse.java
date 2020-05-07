@@ -25,7 +25,7 @@ public class CandidateResponse {
 
 	private String telephone;
 
-	private String endereco;
+	private String address;
 
 	private LocalDate birthdate;
 

@@ -2,29 +2,20 @@ package br.com.jobtechIO.domain.entities;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 import br.com.jobtechIO.domain.enumerations.ContractEnum;
 import br.com.jobtechIO.domain.enumerations.ExperienceEnum;
 import br.com.jobtechIO.domain.enumerations.JobOpportunityStatusEnum;
 import br.com.jobtechIO.domain.enumerations.YesNoPartial;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Builder
 public class JobOpportunity extends BaseEntity {
 
 	@ManyToOne
@@ -38,6 +29,7 @@ public class JobOpportunity extends BaseEntity {
 	private String description;
 
 	@Column(nullable = false, length = 250)
+	@Enumerated(EnumType.STRING)
 	private JobOpportunityStatusEnum status;
 
 	@Column(nullable = false, length = 250)
@@ -63,12 +55,15 @@ public class JobOpportunity extends BaseEntity {
 	private String location;
 
 	@Column(nullable = false, length = 7)
+	@Enumerated(EnumType.STRING)
 	private YesNoPartial remote;
 
 	@Column(nullable = false, length = 7)
+	@Enumerated(EnumType.STRING)
 	private ContractEnum typeOfContract;
 
 	@Column(nullable = false, length = 14)
+	@Enumerated(EnumType.STRING)
 	private ExperienceEnum seniority;
 
 }

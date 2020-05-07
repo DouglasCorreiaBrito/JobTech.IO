@@ -11,16 +11,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Builder
 public class Candidate extends BaseEntity {
 
 	@Column(nullable = false, length = 250)
@@ -36,7 +34,7 @@ public class Candidate extends BaseEntity {
 	private String telephone;
 
 	@Column(nullable = false, length = 250)
-	private String endereco;
+	private String address;
 
 	@Column(nullable = false)
 	private LocalDate birthdate;

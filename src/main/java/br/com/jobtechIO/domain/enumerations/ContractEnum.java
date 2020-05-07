@@ -2,7 +2,7 @@ package br.com.jobtechIO.domain.enumerations;
 
 public enum ContractEnum {
 
-	CLT("CLT"), CONTRATO_PJ("PJ"), CONTRATO_ESTAGIO("ESTAGIO");
+	CLT("CLT"), PJ("PJ"), ESTAGIO("ESTAGIO");
 
 	private final String value;
 

@@ -7,6 +7,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import br.com.jobtechIO.domain.validators.LocalDateValidate;
 import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -39,11 +40,10 @@ public class CandidateRequest {
 	private String telephone;
 
 	@NotNull
-	@NotBlank(message = "endereco is required")
-	private String endereco;
+	@NotBlank(message = "address is required")
+	private String address;
 
 	@NotNull
-	@DateTimeFormat
 	private LocalDate birthdate;
 
 	private List<Integer> skills;
