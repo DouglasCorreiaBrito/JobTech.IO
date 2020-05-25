@@ -2,6 +2,7 @@ package br.com.jobtechIO.controller;
 
 import br.com.jobtechIO.domain.dto.request.CandidateRequest;
 import br.com.jobtechIO.domain.dto.response.CandidateResponse;
+import br.com.jobtechIO.domain.dto.response.JobOpportunityResponse;
 import br.com.jobtechIO.domain.entities.Candidate;
 import br.com.jobtechIO.domain.mapper.CandidateMapper;
 import br.com.jobtechIO.service.CandidateService;
@@ -37,6 +38,7 @@ public class CandidateController {
 	public ResponseEntity<CandidateResponse> getById(@PathVariable Integer id) {
 		return ResponseEntity.ok(mapper.entityToDto(service.getById(id)));
 	}
+
 
 	@ApiOperation(value = "list all candidates")
 	@GetMapping
