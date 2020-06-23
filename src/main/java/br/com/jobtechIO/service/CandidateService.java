@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import br.com.jobtechIO.domain.entities.Candidate;
@@ -34,7 +35,9 @@ public class CandidateService {
 		return repository.findByNameContainingIgnoreCase(name);
 	}
 
+
 	public Candidate create(Candidate entity) {
+		entity.setPassword(new BCryptPasswordEncoder().encode(entity.getPassword()));
 		entity.setCreatedAt(LocalDate.now());
 		entity.setUpdatedAt(LocalDate.now());
 		return repository.save(entity);
@@ -58,6 +61,7 @@ public class CandidateService {
 		candidate.setBirthdate(entity.getBirthdate());
 		candidate.setTelephone(entity.getTelephone());
 		candidate.setUpdatedAt(LocalDate.now());
+		candidate.setPassword(new BCryptPasswordEncoder().encode(entity.getPassword()));
 
 		return repository.save(candidate);
 	}

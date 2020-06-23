@@ -36,6 +36,10 @@ public class CandidateRequest {
 	private String email;
 
 	@NotNull
+	@NotBlank(message = "address is required")
+	private String password;
+
+	@NotNull
 	@Phone
 	private String telephone;
 

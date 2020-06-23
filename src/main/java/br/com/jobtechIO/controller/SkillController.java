@@ -28,7 +28,7 @@ import br.com.jobtechIO.service.SkillService;
 
 @RestController
 @RequestMapping("/skills")
-@Api(tags = { " Skils " }, value = "end-point to manage job skills")
+@Api(tags = { " Skills " }, value = "end-point to manage job skills")
 public class SkillController {
 
 	private final SkillService service;
