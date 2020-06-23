@@ -1,0 +1,1041 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  
+  
+}
+.wrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background:white;
+
+}
+body{
+padding-top: 5%;
+}
+
+.home{
+  min-height: 80vh;
+  width: 90%;
+  background: whitesmoke;
+  padding: 15px;
+  margin-left: 5%;
+  border-radius: 1rem;
+  margin-bottom: 10px;
+  box-shadow: 0px 0px 1em #666;
+  -webkit-box-shadow: 0px 0px 1em #666;
+  -moz-box-shadow: 0px 0px 1em #666;
+  
+}
+
+.container-img-child{
+    width: 200px;
+    height: 200px;
+
+}
+
+.container-img-parent{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+h1.redesSociais {
+  display: none;
+}
+
+ul.redesSociais {
+  padding-left: 0;
+  width: 620px;
+  height: 100px;
+  position: relative;
+  left: 50%;
+  margin-top: 50px;
+  margin-left: -310px;
+  margin-bottom: 50px;
+  cursor: pointer;
+}
+
+ul.redesSociais li {
+  list-style-position: inside;
+  display: block;
+  position: absolute;
+  right: 50%;
+  transition: all 500ms;
+}
+
+/*Sem Mouse*/
+ul.redesSociais li.github {
+  transform: scale(0.5);
+  margin-right: -10px;
+  z-index:0;
+}
+ul.redesSociais li.facebook {
+  transform: scale(0.5);
+  margin-right: -30px;
+  z-index:1;
+}
+ul.redesSociais li.twitter {
+  transform: scale(0.5);
+  margin-right: -50px;
+  z-index:2;
+}
+ul.redesSociais li.googleplus {
+  transform: scale(0.5);
+  margin-right: -70px;
+  z-index:1;
+}
+ul.redesSociais li.insta {
+  transform: scale(0.5);
+  margin-right: -90px;
+  z-index:0;
+}
+
+/*Com Mouse*/
+ul.redesSociais:hover li.github {
+  margin-right: 190px;
+}
+ul.redesSociais:hover li.facebook {
+  margin-right: 70px;
+}
+ul.redesSociais:hover li.twitter {
+  margin-right: -50px;
+}
+ul.redesSociais:hover li.googleplus {
+  margin-right: -170px;
+}
+ul.redesSociais:hover li.insta {
+   margin-right: -290px;
+}
+
+.about{
+  min-height: 80vh;
+  width: 90%;
+  background: whitesmoke;
+  padding: 15px;
+  border-radius: 1rem;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 5%;
+  box-shadow: 0px 0px 1em #666;
+  -webkit-box-shadow: 0px 0px 1em #666;
+  -moz-box-shadow: 0px 0px 1em #666;
+}
+
+
+#mycard-service * {
+  box-sizing: border-box;
+}
+
+#mycard-service *:after {
+  box-sizing: border-box;
+}
+
+#mycard-service img {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+}
+
+#mycard-service a {
+  
+  transition: all 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+#mycard-service a:hover {
+  
+  transition: all 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+#mycard-service {
+  display: inline;
+}
+
+.mycard {
+  background-image: linear-gradient(0deg, #2c3e50 0%, #16a085 100%);
+  width: 300px;
+  height: 300px;
+  margin: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.mycard-image {
+  height: 350px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+  transition: all 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.mycard-meta {
+  font-size: 0.6875em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.mycard-meta:before {
+  content: "";
+  height: 1px;
+  width: 30px;
+  background-color: #fff;
+  position: relative;
+  display: block;
+  margin-bottom: 10px;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  opacity: 0;
+  -webkit-transform: translate(0, -10px);
+          transform: translate(0, -10px);
+  transition: all 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.mycard-text {
+  color: #fff;
+  background-color: rgba(17, 17, 17, 0.65);
+  position: absolute;
+  padding: 20px;
+  z-index: 10;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-end;
+  transition: all 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.mycard-title {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  font-weight: 300;
+  font-size: 1.275em;
+}
+
+.mycard a:hover .mycard-text {
+  background-color: rgba(17, 17, 17, 0.86);
+}
+.mycard a:hover .mycard-meta:before {
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+  opacity: 1;
+  transition: all 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.mycard a:hover .mycard-image {
+  -webkit-transform: translate(20px, 0);
+          transform: translate(20px, 0);
+  transition: all 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.btn {
+  background-color: white;
+  border: 1px solid #cccccc;
+  color: #696969;
+  padding: 0.5rem;
+  text-transform: lowercase;
+}
+.btn--block {
+  display: block;
+  width: 100%;
+}
+
+.info-services{
+ margin-left: 6%;
+}
+
+.container-skills {
+	margin: 20px auto 0 auto;
+  max-width: 80%;
+}
+
+.bar {
+  position: relative;
+	background-color: #d8d8d8;
+	height: 10px;
+	margin: 0 0 20px 0;
+}
+.bar-fill {
+  position: absolute;
+  height: 10px;
+}
+.bar-title {
+  position: relative;
+	font-size: 1em;
+	text-align: left;
+	margin: 0 0 5px 0;
+}
+.percent {
+  position: absolute;
+	right: 0;
+}
+
+/* Animations Below - Replace ease-out with infinite for infinite loop*/
+/*Edit here for html*/  
+.bar-fill-html {
+	width: 90%;
+  background-color: #e44d26;
+	animation: bar-fill-html 2s ease-out;
+	-moz-animation: bar-fill-html 2s ease-out;
+  -webkit-animation: bar-fill-html 2s ease-out;
+}
+@keyframes bar-fill-html {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 90%;
+    }
+}
+@-moz-keyframes bar-fill-html {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 90%;
+    }
+}
+@-webkit-keyframes bar-fill-html {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 90%;
+    }
+}
+/*Edit here for Javascript*/
+.bar-fill-javascript {
+	width: 60%;
+  background-color: #f8dc3d;
+  animation: bar-fill-javascript 2s ease-out;
+	-moz-animation: bar-fill-javascript 2s ease-out;
+  -webkit-animation: bar-fill-javascript 2s ease-out;
+}
+@keyframes bar-fill-javascript {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 60%;
+    }
+}
+@-moz-keyframes bar-fill-javascript {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 60%;
+    }
+}
+@-webkit-keyframes bar-fill-javascript {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 60%;
+    }
+}
+/*Edit here for typescript*/
+.bar-fill-typescript{
+	width: 40%;
+  background-color: #1a3f7a;
+  animation: bar-fill-typescript 2s ease-out;
+	-moz-animation: bar-fill-typescript 2s ease-out;
+  -webkit-animation: bar-fill-typescript 2s ease-out;
+}
+@keyframes bar-fill-typescript {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 40%;
+    }
+}
+@-moz-keyframes bar-fill-typescript {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 40%;
+    }
+}
+@-webkit-keyframes bar-fill-typescript {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 40%;
+    }
+}
+/*Edit here for Java*/
+.bar-fill-java{
+	width: 90%;
+  background-color: #c23f36;
+  animation: bar-fill-java 2s ease-out;
+	-moz-animation: bar-fill-java 2s ease-out;
+  -webkit-animation: bar-fill-java 2s ease-out;
+}
+@keyframes bar-fill-java {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 90%;
+    }
+}
+@-moz-keyframes bar-fill-java {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 90%;
+    }
+}
+@-webkit-keyframes bar-fill-java {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 90%;
+    }
+}
+/*Edit here for python*/
+.bar-fill-python{
+	width: 70%;
+  background-color: #0a73dc;
+  animation: bar-fill-python 2s ease-out;
+	-moz-animation: bar-fill-python 2s ease-out;
+  -webkit-animation: bar-fill-python 2s ease-out;
+}
+@keyframes bar-fill-python {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 70%;
+    }
+}
+@-moz-keyframes bar-fill-python {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 70%;
+    }
+}
+@-webkit-keyframes bar-fill-python {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 70%;
+    }
+}
+
+/*Edit here for Angular*/
+.bar-fill-angular{
+	width: 40%;
+  background-color: red;
+  animation: bar-fill-angular 2s ease-out;
+	-moz-animation: bar-fill-angular 2s ease-out;
+  -webkit-animation: bar-fill-angular 2s ease-out;
+}
+@keyframes bar-fill-angular {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 40%;
+    }
+}
+@-moz-keyframes bar-fill-angular {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 40%;
+    }
+}
+@-webkit-keyframes bar-fill-angular {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 40%;
+    }
+}
+
+/*Edit here for Spring*/
+.bar-fill-spring{
+	width: 60%;
+  background-color: green;
+  animation: bar-fill-spring 2s ease-out;
+	-moz-animation: bar-fill-spring 2s ease-out;
+  -webkit-animation: bar-fill-spring 2s ease-out;
+}
+@keyframes bar-fill-spring {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 60%;
+    }
+}
+@-moz-keyframes bar-fill-spring {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 60%;
+    }
+}
+@-webkit-keyframes bar-fill-spring {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 60%;
+    }
+}
+
+/*Edit here for Bootstrap*/
+.bar-fill-bootstrap{
+	width: 80%;
+  background-color: purple;
+  animation: bar-fill-bootstrap 2s ease-out;
+	-moz-animation: bar-fill-bootstrap 2s ease-out;
+  -webkit-animation: bar-fill-bootstrap 2s ease-out;
+}
+@keyframes bar-fill-bootstrap {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 80%;
+    }
+}
+@-moz-keyframes bar-fill-bootstrap {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 80%;
+    }
+}
+@-webkit-keyframes bar-fill-bootstrap {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 80%;
+    }
+}
+
+/*Edit here for Git*/
+.bar-fill-git{
+	width: 75%;
+  background-color: darkred;
+  animation: bar-fill-git 2s ease-out;
+	-moz-animation: bar-fill-git 2s ease-out;
+  -webkit-animation: bar-fill-git 2s ease-out;
+}
+@keyframes bar-fill-git {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 75%;
+    }
+}
+@-moz-keyframes bar-fill-git {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 75%;
+    }
+}
+@-webkit-keyframes bar-fill-git {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 75%;
+    }
+}
+
+/*Edit here for Github*/
+.bar-fill-github{
+	width: 75%;
+  background-color: #24292e;
+  animation: bar-fill-github 2s ease-out;
+	-moz-animation: bar-fill-github 2s ease-out;
+  -webkit-animation: bar-fill-github 2s ease-out;
+}
+@keyframes bar-fill-github {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 75%;
+    }
+}
+@-moz-keyframes bar-fill-github {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 75%;
+    }
+}
+@-webkit-keyframes bar-fill-github {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 75%;
+    }
+}
+
+/*Edit here for Azure*/
+.bar-fill-azure{
+	width: 60%;
+  background-color: lightblue;
+  animation: bar-fill-azure 2s ease-out;
+	-moz-animation: bar-fill-azure 2s ease-out;
+  -webkit-animation: bar-fill-azure 2s ease-out;
+}
+@keyframes bar-fill-azure {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 65%;
+    }
+}
+@-moz-keyframes bar-fill-azure {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 65%;
+    }
+}
+@-webkit-keyframes bar-fill-azure {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 65%;
+    }
+}
+
+/*Edit here for lol*/
+.bar-fill-lol{
+	width: 10%;
+  background-color: darkblue;
+  animation: bar-fill-lol 2s ease-out;
+	-moz-animation: bar-fill-lol 2s ease-out;
+  -webkit-animation: bar-fill-lol 2s ease-out;
+}
+@keyframes bar-fill-lol {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 10%;
+    }
+}
+@-moz-keyframes bar-fill-lol {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 10%;
+    }
+}
+@-webkit-keyframes bar-fill-lol {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 10%;
+    }
+}
+
+/*Edit here for overwatch*/
+.bar-fill-overwatch{
+	width: 90%;
+  background-color: darkorange;
+  animation: bar-fill-overwatch 2s ease-out;
+	-moz-animation: bar-fill-overwatch 2s ease-out;
+  -webkit-animation: bar-fill-overwatch 2s ease-out;
+}
+@keyframes bar-fill-overwatch {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 90%;
+    }
+}
+@-moz-keyframes bar-fill-overwatch {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 90%;
+    }
+}
+@-webkit-keyframes bar-fill-overwatch {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 90%;
+    }
+}
+
+/*Edit here for fifa*/
+.bar-fill-fifa{
+	width: 80%;
+  background-color: darkcyan;
+  animation: bar-fill-fifa 2s ease-out;
+	-moz-animation: bar-fill-fifa 2s ease-out;
+  -webkit-animation: bar-fill-fifa 2s ease-out;
+}
+@keyframes bar-fill-fifa {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 80%;
+    }
+}
+@-moz-keyframes bar-fill-fifa {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 80%;
+    }
+}
+@-webkit-keyframes bar-fill-fifa {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 80%;
+    }
+}
+
+.experience{
+  
+    min-height: 80vh;
+    width: 90%;
+    background: whitesmoke;
+    padding: 15px;
+    border-radius: 1rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 5%;
+    box-shadow: 0px 0px 1em #666;
+    -webkit-box-shadow: 0px 0px 1em #666;
+    -moz-box-shadow: 0px 0px 1em #666;
+  
+}
+
+/* Block itself */
+.timeline {
+  position: relative;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 2rem 0;
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* Timeline Header */
+.timeline__header {
+  text-align: center;
+  padding-bottom: 2rem;
+}
+
+/* Timeline Content */
+.timeline__content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @media only screen and (max-width: 600px) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    align-items: flex-start;
+  }
+}
+
+/* Timeline center line */
+.timeline__content:after {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: block;
+  content: "";
+  width: 4px;
+  height: 100%;
+  background: #212529;
+  z-index: -1;
+  @media only screen and (max-width: 600px) {
+    left: 3rem;
+    transform: unset;
+  }
+}
+
+/* Timeline Edge Steps */
+.timeline__content-edge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  height: 65px;
+  width: 65px;
+  overflow: hidden;
+}
+.timeline__content-edge--first {
+  background: #212529;
+  color: white;
+  margin-bottom: 1.5rem;
+}
+.timeline__content-edge--last {
+  margin-top: 50px;
+  background: white;
+  border: solid 4px #212529;
+  color: #212529;
+}
+.timeline__content-edge__title {
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+}
+
+/* Timeline Steps */
+.timeline__content-steps {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  max-width: 760px;
+}
+
+/* Timeline Single Step */
+.timeline__content-step {
+  position: relative;
+  width: 50%;
+  padding-right: 2rem;
+  text-align: right;
+  @media only screen and (max-width: 600px) {
+    width: auto;
+    padding: 0 0 0 4rem;
+    text-align: left;
+  }
+}
+@media only screen and (min-width: 600px) {
+  .timeline__content-step:nth-child(even) {
+    align-self: flex-end;
+    padding-right: unset;
+    padding-left: 2rem;
+    text-align: left;
+  }
+}
+
+/* Timeline Single Step - Title */
+.timeline__content-step__title {
+  width: 100%;
+  padding-bottom: 0.5rem;
+  position: relative;
+}
+
+/* Timeline Single Step - Bottom Line */
+.timeline__content-step__title::after {
+  display: block;
+  content: "";
+  width: calc(100% + 2rem);
+  height: 3px;
+  background: #212529;
+  position: absolute;
+  bottom: -2px;
+  right: -2rem;
+  @media only screen and (max-width: 600px) {
+    right: unset;
+    left: -2rem;
+  }
+}
+
+.timeline__content-step:nth-child(even) .timeline__content-step__title:after {
+  right: unset;
+  left: -2rem;
+}
+
+/* Timeline Single Step - Circle indicator */
+.timeline__content-step__title:before {
+  display: block;
+  content: "";
+  width: 2rem;
+  height: 2rem;
+  background: #212529;
+  border-radius: 100%;
+  position: absolute;
+  bottom: -1rem;
+  right: -48px;
+  z-index: 10;
+  @media only screen and (max-width: 600px) {
+    right: unset;
+    left: -48px;
+  }
+}
+.timeline__content-step:nth-child(even) .timeline__content-step__title:before {
+  right: unset;
+  left: -48px;
+}
+
+/* Timeline Single Step - Description */
+.timeline__content-step__description,
+.timeline__content-step p {
+  margin: 0.5rem 0 0 0;
+  font-size: 1rem;
+  font-weight: 300;
+  text-align: left;
+}
+
+.portifolio{
+  
+  max-height: 80vh;
+  width: 90%;
+  background: whitesmoke;
+  padding: 15px;
+  border-radius: 1rem;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 5%;
+  box-shadow: 0px 0px 1em #666;
+  -webkit-box-shadow: 0px 0px 1em #666;
+  -moz-box-shadow: 0px 0px 1em #666;
+
+}
+
+@media screen and (max-width: 480px){
+
+  .home{
+    margin-top: 60px;
+    min-height: 100vh;
+    min-width: 150%;
+
+  }
+  .about{
+    min-height: 100vh;
+    min-width: 150%;
+  }
+  .experience{
+    min-height: 100vh;
+    min-width: 150%;
+  }
+  .portifolio{
+    max-height: 100vh;
+    min-width: 150%;
+  }
+
+  ul.redesSociais li.github {
+    transform: scale(0.5);
+    margin-right: -30px;
+    z-index:1;
+  }
+  ul.redesSociais li.twitter {
+    transform: scale(0.5);
+    margin-right: -70px;
+    z-index:2;
+  }
+  ul.redesSociais li.facebook {
+   display: none;
+  }
+ 
+  ul.redesSociais li.insta {
+    display: none;
+  }
+  ul.redesSociais li.googleplus {
+    display: none;
+  }
+  ul.redesSociais:hover li.github {
+    margin-right: 1px;
+  }
+
+  ul.redesSociais:hover li.twitter {
+    margin-left: 1px;
+  }
+  .mycard{
+    width: auto;
+  }
+  .timeline__content-step{
+    width: 100%;
+    margin-top: 30px;
+  }
+  .timeline__content-step__title:before {
+   display: none;
+  }
+  .timeline__content-step__title::after {
+    display: none;
+   }
+   .timeline__content-step__title{
+     text-align: center;
+   }
+   
+ 
+  
+  
+}
+
+
