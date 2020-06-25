@@ -1,0 +1,28 @@
+.container{
+	width: 60%;
+    margin: 0 auto;
+    height: 1em;
+    
+}
+
+.card-space{
+    margin-top: 5em;
+}
+
+.btn-color{
+    background-color:  #84e !important;
+}
+
+.card-hover{
+    cursor: pointer;
+    background-color: #343a40 !important;
+}
+
+.card-hover:hover{
+    transform: scale(1.1);
+    box-shadow: 0px 0px 1em rgb(67, 35, 114);
+    -webkit-box-shadow: 0px 0px 1em  rgb(67, 35, 114);
+    -moz-box-shadow: 0px 0px 1em  rgb(67, 35, 114);
+}
+    
+ 
