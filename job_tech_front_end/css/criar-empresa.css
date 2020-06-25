@@ -1,0 +1,27 @@
+.wrapper{
+    display: flexbox;
+    align-items: center;
+    width: 70%;
+    background: #282A2D;
+    padding: 15px;
+    margin-left: 15%;
+    margin-top: 5%;
+    border-radius: 1rem;
+    margin-bottom: 30px;
+    box-shadow: 0px 0px 1em rgb(67, 35, 114);
+    -webkit-box-shadow: 0px 0px 1em  rgb(67, 35, 114);
+    -moz-box-shadow: 0px 0px 1em  rgb(67, 35, 114);
+    
+}
+
+.btn-color{
+    background-color:  #84e !important;
+}
+
+h1{
+    font-size: 3em;
+    display: block;
+    padding-bottom: .5em;
+    border-bottom: 1px solid #84e ;
+    margin-bottom: .5em;
+}
