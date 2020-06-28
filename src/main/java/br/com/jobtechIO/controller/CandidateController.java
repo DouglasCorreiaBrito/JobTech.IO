@@ -26,11 +26,9 @@ public class CandidateController {
 	private final CandidateService service;
 	private final CandidateMapper mapper;
 
-
 	public CandidateController(CandidateService service, CandidateMapper mapper) {
 		this.service = service;
 		this.mapper = mapper;
-
 	}
 
 	@ApiOperation(value = "filter candidate by id")
