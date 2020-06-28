@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>Vagas</title>
+<link rel="stylesheet" href="../css/home.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</head>
+<body style="background-color: #1B1D20;">
+	<main class="wrapper">
+		<div class="navbar">
+			<a class="navbar-brand" href="#">JobTech.IO</a> <a href="#"
+				class="active">Home</a> <a href="#">Vagas</a> <a href="#">Empresas</a>
+			<div class="dropdown">
+				<button class="dropbtn dropdown-toggle text-light">
+					Olá, Fulanx! <i class="fa fa-caret-down"></i>
+				</button>
+				<div class="dropdown-content">
+					<a href="#">Meu perfil</a> <a href="#">Minhas vagas</a> <a href="#">Sair</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="header">
+			<h1>JobTech.IO</h1>
+			<p class="paragraph">Temos 93 vagas para você</p>
+		</div>
+		<br>
+		<div class="home">
+			<input type="search" placeholder="Pesquise uma vaga" name="q" id="keywords">
+			<input type="search" placeholder="Busque por localização" name="l" id="location">
+			<a class="btnsch text-light" onclick="javascript:makeRequest();">Buscar</a>
+		</div>
+		<br>
+		<div class="container home" id="dynamic-content">
+			<div class="row">
+				<!-- filtros de pesquisa-->
+				<div class="col-lg-3 text-light">
+					<form class="form-group">
+						<div class="row mx-auto">
+							<div class="col-xs-12">
+								Tipo de Contrato:
+								<div class="form-check">
+									<input class="form-check-input" type="checkbox" value="clt"
+										id="contratoCheck1"> <label class="form-check-label"
+										for="contratoCheck1"> CLT </label>
+								</div>
+								<div class="form-check">
+									<input class="form-check-input" type="checkbox" value="pj"
+										id="contratoCheck2"> <label class="form-check-label"
+										for="contratoCheck2"> PJ </label>
+								</div>
+								<div class="form-check">
+									<input class="form-check-input" type="checkbox" value="estagio"
+										id="contratoCheck3"> <label class="form-check-label"
+										for="contratoCheck3"> Contrato/Estágio </label>
+								</div>
+							</div>
+						</div>
+						<div class="row mx-auto">
+							<div class="col-xs-12">
+								Cargo:
+								<div class="form-check">
+									<input class="form-check-input" type="checkbox"
+										value="jovem_aprendiz" id="cargoCheck1"> <label
+										class="form-check-label" for="contratoCheck1"> Jovem
+										Aprendiz </label>
+								</div>
+								<div class="form-check">
+									<input class="form-check-input" type="checkbox"
+										value="estagiario" id="cargoCheck2"> <label
+										class="form-check-label" for="cargoCheck2"> Estagiário
+									</label>
+								</div>
+								<div class="form-check">
+									<input class="form-check-input" type="checkbox" value="junior"
+										id="cargoCheck3"> <label class="form-check-label"
+										for="cargoCheck3"> Júnior </label>
+								</div>
+								<div class="form-check">
+									<input class="form-check-input" type="checkbox" value="pleno"
+										id="cargoCheck4"> <label class="form-check-label"
+										for="cargoCheck4"> Pleno </label>
+								</div>
+								<div class="form-check">
+									<input class="form-check-input" type="checkbox" value="senior"
+										id="cargoCheck5"> <label class="form-check-label"
+										for="cargoCheck5"> Sênior </label>
+								</div>
+							</div>
+						</div>
+						<div class="row mx-auto">
+							<div class="col-xs-12">
+								Acessibilidade:
+								<div class="form-check">
+									<input class="form-check-input" type="checkbox"
+										value="cadeirante" id="acessCheck1"> <label
+										class="form-check-label" for="contratoCheck1">
+										Cadeirante </label>
+								</div>
+								<div class="form-check">
+									<input class="form-check-input" type="checkbox"
+										value="def_visual" id="acessCheck2"> <label
+										class="form-check-label" for="acessCheck2"> Deficiente
+										visual </label>
+								</div>
+								<div class="form-check">
+									<input class="form-check-input" type="checkbox"
+										value="def_auditivo" id="acessCheck3"> <label
+										class="form-check-label" for="acessCheck3"> Deficiente
+										auditivo </label>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+				<!-- resultados da pesquisa-->
+				<div class="col-lg-9" id="search-content"></div>
+			</div>
+		</div>
+	</main>
+	<br>
+</body>
+<footer class="site-footer">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 col-md-6">
+				<h6>Sobre</h6>
+				<p class="text-justify">JobTech.io nasceu com o propósito de
+					levar aos programadores as melhores oportunidades de trabalho, bem
+					como levar para as empresas de tecnologia os melhores talentos que
+					conseguem codar os ifs mais mirabolantes do universo.</p>
+			</div>
+
+			<div class="col-xs-6 col-md-3">
+				<h6>Colaboradores</h6>
+				<ul class="footer-links">
+					<li><a>Daniela Ramo</a></li>
+					<li><a>Douglas Correia</a></li>
+					<li><a>Gustavo Brito</a></li>
+				</ul>
+			</div>
+		</div>
+		<hr>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 col-sm-6 col-xs-12">
+				<p class="copyright-text">
+					Copyright &copy; 2020 All Rights Reserved by <a href="#">Fatec</a>.
+				</p>
+			</div>
+			<div class="col-md-4 col-sm-6 col-xs-12">
+				<ul class="social-icons">
+					<li><a class="facebook"><i class="fa fa-facebook"></i></a></li>
+					<li><a class="twitter"><i class="fa fa-twitter"></i></a></li>
+					<li><a class="dribbble"><i class="fa fa-dribbble"></i></a></li>
+					<li><a class="linkedin"><i class="fa fa-linkedin"></i></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</footer>
+<script>
+        function makeRequest() {
+            let keywords = document.getElementById('keywords').value;
+            let location = document.getElementById('location').value;
+            let url = '/jobs'
+            if(keywords != undefined && keywords != ''){
+                url += '/filtered/' + keywords;
+            } else if(location != undefined && location != ''){
+                url += '/filtered/location/' + location;
+            }
+
+            document.getElementById('search-content').innerHTML = '';
+            
+            $.get(
+                url,
+                { },
+                function (data) {
+                    data.forEach((entry) => {
+                        
+                        let toggleCollapse = document.createElement('button');
+                        toggleCollapse.classList.add('btn');
+                        toggleCollapse.classList.add('btn-link');
+                        toggleCollapse.setAttribute('data-toggle', 'collapse');
+                        toggleCollapse.setAttribute('data-target', '#collapse' + entry.id);
+                        toggleCollapse.setAttribute('aria-expanded', 'true');
+                        toggleCollapse.setAttribute('aria-controls', 'collapse' + entry.id);
+                        toggleCollapse.innerHTML = entry.title;
+                        
+                        let title = document.createElement('h5');
+                        title.classList.add('mb-0');
+                        title.appendChild(toggleCollapse);
+                        
+                        let header = document.createElement('div');
+                        header.classList.add('card-header');
+                        header.id = 'heading' + entry.id;
+                        header.appendChild(title);
+                        
+                        let body = document.createElement('div');
+                        body.classList.add('card-body');
+                        body.innerHTML = 'Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven\'t heard of them accusamus labore sustainable VHS.'
+                        
+                        let collapse = document.createElement('div');
+                        collapse.id = 'collapse' + entry.id;
+                        collapse.classList.add('collapse');
+                        collapse.setAttribute('aria-labelledby', 'heading' + entry.id);
+                        collapse.setAttribute('data-parent', '#search-content');
+                        collapse.appendChild(body);
+
+                        let jobDiv = document.createElement('div');
+                        jobDiv.classList.add('card');
+                        jobDiv.appendChild(header)
+                        jobDiv.appendChild(collapse);
+
+                        document.getElementById('search-content').appendChild(jobDiv);
+                    });
+                }
+            );
+
+        }
+    </script>
+</html>
