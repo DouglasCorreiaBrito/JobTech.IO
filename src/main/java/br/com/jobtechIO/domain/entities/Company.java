@@ -15,7 +15,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Builder
 @Entity
-public class Company extends BaseEntity {
+public class  Company extends BaseEntity {
 
 	@Column(nullable = false, length = 250)
 	private String name;
@@ -25,6 +25,9 @@ public class Company extends BaseEntity {
 
 	@Column(nullable = false, length = 250)
 	private String email;
+
+	@Column(nullable = false, length = 250)
+	private String password;
 
 	@Column(nullable = false, length = 250)
 	private String address;
