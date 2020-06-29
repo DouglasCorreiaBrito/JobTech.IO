@@ -34,6 +34,8 @@ public class CompanyRequest {
 	@NotBlank(message = "name is not blank")
 	@Size(max = 200)
 	private String address;
+	
+	private String password;
 
 	@CNPJ
 	private String cnpj;
