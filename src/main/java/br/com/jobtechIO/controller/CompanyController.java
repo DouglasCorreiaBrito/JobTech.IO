@@ -2,12 +2,18 @@ package br.com.jobtechIO.controller;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 import br.com.jobtechIO.domain.dto.request.CompanyRequest;
 import br.com.jobtechIO.domain.dto.response.CompanyResponse;
@@ -33,6 +40,16 @@ public class CompanyController {
 
 	private final CompanyService service;
 	private final CompanyMapper mapper;
+
+	@Autowired
+	private JdbcTemplate jdbcTemplate;
+
+	@GetMapping(value = "/report")
+	public List<Map<String, Object>>  executeStoredProcedure() {
+		String query = "call generate_report()";
+		System.out.println("Stored Procedure executed: " + query);
+		return jdbcTemplate.queryForList(query);
+	}
 
 	public CompanyController(CompanyService service, CompanyMapper mapper) {
 		this.service = service;
