@@ -1,136 +1,235 @@
 <!doctype html>
 <html lang="pt-br">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Dani</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../css/home.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JobTech</title>
+<link rel="stylesheet" href="../css/home.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="https://kit.fontawesome.com/89fd45dbfa.js"></script>
+<script src="../js/api.js"></script>
 
-  </head>
-  <body class="body" style="background-color:#1B1D20;">
-    <main class="wrapper">
-         <div class="navbar">
-            <a class="navbar-brand" href="#">JobTech.IO</a>
-            <a href="#" class="active">Home</a>
-            <a href="#">Vagas</a>
-            <a href="#">Empresas</a>
-            <div class="dropdown">
-                <button class="dropbtn dropdown-toggle text-light">Olá, Fulanx!
-                  <i class="fa fa-caret-down"></i>
-                </button>
-                <div class="dropdown-content">
-                  <a href="#">Meu perfil</a>
-                  <a href="#">Minhas vagas</a>
-                  <a href="#">Sair</a>
-                </div>
-            </div> 
-         </div>
+</head>
+<body class="body" style="background-color: #1B1D20;">
+	<main class="wrapper">
+		<div class="navbar">
+			<a class="navbar-brand" href="#">JobTech.IO</a> <a href="#"
+				class="active">Home</a> <a href="#">Vagas</a> <a href="#">Empresas</a>
+			<div class="dropdown">
+				<button class="dropbtn dropdown-toggle text-light">
+					Olá, Fulanx! <i class="fa fa-caret-down"></i>
+				</button>
+				<div class="dropdown-content">
+					<a href="#">Meu perfil</a> <a href="#">Minhas vagas</a> <a href="#">Sair</a>
+				</div>
+			</div>
+		</div>
 
 
-        <div class="header">
-            <h1><b>JobTech.IO</b></h1>
-            <p class="paragraph">Temos 93 vagas para você</p>
-        </div>
-        
-        <div class="home">
-            <input type="search" placeholder="Pesquise uma vaga" name="sch">
-            <input type="search" placeholder="Busque por localização" name="sch">
-            <a href="#" class="btnsch text-light">Buscar</a>
-        </div>
+		<div class="header">
+			<h1>
+				<b>JobTech.IO</b>
+			</h1>
+			<p class="paragraph">Temos 93 vagas para você</p>
+		</div>
 
-          <div class="rowline">
-            <h2 style="font-size: 20px; text-align: center; color: white;">Confira as principais empresas que estão contratando</h2>
-        </div>
+		<div class="home">
+			<input type="search" placeholder="Pesquise uma vaga" name="sch" id="keywords">
+			<input type="search" placeholder="Busque por localização" name="sch" id="location">
+			<a class="btnsch text-light" onclick="javascript:searchJobs();">Buscar</a>
+		</div>
 
-        <div class="container"> 
-            <div id="myCarousel" class="carousel slide" data-ride="carousel">
-              <!-- Indicators -->
-              <ol class="carousel-indicators">
-                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                <li data-target="#myCarousel" data-slide-to="1"></li>
-                <li data-target="#myCarousel" data-slide-to="2"></li>
-              </ol>
-          
-              <!-- Wrapper for slides -->
-              <div class="carousel-inner">
-                <div class="item active">
-                  <img src="imgs/ibm.PNG" alt="IBM">
-                </div>
-          
-                <div class="item">
-                  <img src="imgs/avnd.PNG" alt="Avanade">
-                </div>
-              
-                <div class="item">
-                  <img src="imgs/tts.PNG" alt="TOTVS">
-                </div>
-              </div>
-          
-              <!-- Left and right controls -->
-              <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left"></span>
-                <span class="sr-only">Previous</span>
-              </a>
-              <a class="right carousel-control" href="#myCarousel" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right"></span>
-                <span class="sr-only">Next</span>
-              </a>
-            </div>
-          </div>
-          
+		<div class="rowline">
+			<h2 style="font-size: 20px; text-align: center; color: white;">Confira
+				as principais empresas que estão contratando</h2>
+		</div>
 
-          <div class="row mx-md-n5">
-            <div class="col px-md-5"><div class="mb-5"></div></div>
-            <div class="col px-md-5"><div class="mb-5"></div></div>
-          </div>
-    </main>
+		<div class="container" id="carroussel">
+			<div id="myCarousel" class="carousel slide" data-ride="carousel">
+				<!-- Indicators -->
+				<ol class="carousel-indicators">
+					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+					<li data-target="#myCarousel" data-slide-to="1"></li>
+					<li data-target="#myCarousel" data-slide-to="2"></li>
+				</ol>
+
+				<!-- Wrapper for slides -->
+				<div class="carousel-inner">
+					<div class="item active">
+						<img src="imgs/ibm.PNG" alt="IBM">
+					</div>
+
+					<div class="item">
+						<img src="imgs/avnd.PNG" alt="Avanade">
+					</div>
+
+					<div class="item">
+						<img src="imgs/tts.PNG" alt="TOTVS">
+					</div>
+				</div>
+
+				<!-- Left and right controls -->
+				<a class="left carousel-control" href="#myCarousel"
+					data-slide="prev"> <span
+					class="glyphicon glyphicon-chevron-left"></span> <span
+					class="sr-only">Previous</span>
+				</a> <a class="right carousel-control" href="#myCarousel"
+					data-slide="next"> <span
+					class="glyphicon glyphicon-chevron-right"></span> <span
+					class="sr-only">Next</span>
+				</a>
+			</div>
+		</div>
+		<div class="container home" id="dynamic-content">
+			<div class="row">
+				<!-- filtros de pesquisa-->
+				<div class="col-lg-3 text-light">
+					<form class="form-group">
+						<div class="row mx-auto">
+							<div class="col-xs-12">
+								Tipo de Contrato:
+								<div class="form-check">
+									<input class="form-check-input position-relative" type="checkbox" value="clt"
+										id="contratoCheck1"> <label class="form-check-label"
+										for="contratoCheck1"> CLT </label>
+								</div>
+								<div class="form-check">
+									<input class="form-check-input position-relative" type="checkbox" value="pj"
+										id="contratoCheck2"> <label class="form-check-label"
+										for="contratoCheck2"> PJ </label>
+								</div>
+								<div class="form-check">
+									<input class="form-check-input position-relative" type="checkbox" value="estagio"
+										id="contratoCheck3"> <label class="form-check-label"
+										for="contratoCheck3"> Contrato/Estágio </label>
+								</div>
+							</div>
+						</div>
+						<div class="row mx-auto">
+							<div class="col-xs-12">
+								Cargo:
+								<div class="form-check">
+									<input class="form-check-input position-relative" type="checkbox"
+										value="jovem_aprendiz" id="cargoCheck1"> <label
+										class="form-check-label" for="cargoCheck1"> Jovem
+										Aprendiz </label>
+								</div>
+								<div class="form-check">
+									<input class="form-check-input position-relative" type="checkbox"
+										value="estagiario" id="cargoCheck2"> <label
+										class="form-check-label" for="cargoCheck2"> Estagiário
+									</label>
+								</div>
+								<div class="form-check">
+									<input class="form-check-input position-relative" type="checkbox" value="junior"
+										id="cargoCheck3"> <label class="form-check-label"
+										for="cargoCheck3"> Júnior </label>
+								</div>
+								<div class="form-check">
+									<input class="form-check-input position-relative" type="checkbox" value="pleno"
+										id="cargoCheck4"> <label class="form-check-label"
+										for="cargoCheck4"> Pleno </label>
+								</div>
+								<div class="form-check">
+									<input class="form-check-input position-relative" type="checkbox" value="senior"
+										id="cargoCheck5"> <label class="form-check-label"
+										for="cargoCheck5"> Sênior </label>
+								</div>
+							</div>
+						</div>
+						<div class="row mx-auto">
+							<div class="col-xs-12">
+								Acessibilidade:
+								<div class="form-check">
+									<input class="form-check-input position-relative" type="checkbox"
+										value="cadeirante" id="accessCheck1"> <label
+										class="form-check-label" for="accessCheck1">
+										Cadeirante </label>
+								</div>
+								<div class="form-check">
+									<input class="form-check-input position-relative" type="checkbox"
+										value="def_visual" id="accessCheck2"> <label
+										class="form-check-label" for="accessCheck2"> Deficiente
+										visual </label>
+								</div>
+								<div class="form-check">
+									<input class="form-check-input position-relative" type="checkbox"
+										value="def_auditivo" id="accessCheck3"> <label
+										class="form-check-label" for="accessCheck3"> Deficiente
+										auditivo </label>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+				<!-- resultados da pesquisa-->
+				<div class="col-lg-9" id="search-content"></div>
+			</div>
+		</div>
+
+		<div class="row mx-md-n5">
+			<div class="col px-md-5">
+				<div class="mb-5"></div>
+			</div>
+			<div class="col px-md-5">
+				<div class="mb-5"></div>
+			</div>
+		</div>
+	</main>
 </body>
-  <footer class="site-footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12 col-md-6">
-                <h6>Sobre</h6>
-                <p class="text-justify">JobTech.io nasceu com o propósito de levar aos programadores as melhores oportunidades de trabalho, bem como levar para as empresas de tecnologia os melhores talentos que conseguem codar os ifs mais mirabolantes do universo.
-                </p>
-            </div>
+<footer class="site-footer">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 col-md-6">
+				<h6>Sobre</h6>
+				<p class="text-justify">JobTech.io nasceu com o propósito de
+					levar aos programadores as melhores oportunidades de trabalho, bem
+					como levar para as empresas de tecnologia os melhores talentos que
+					conseguem codar os ifs mais mirabolantes do universo.</p>
+			</div>
 
-            <div class="col-xs-6 col-md-3">
-                <h6>Colaboradores</h6>
-                <ul class="footer-links">
-                    <li><a>Daniela Ramo</a></li>
-                    <li><a>Douglas Correia</a></li>
-                    <li><a>Gustavo Brito</a></li>
-                </ul>
-            </div>
-        </div>
-        <hr>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-sm-6 col-xs-12">
-                <p class="copyright-text">Copyright &copy; 2020 All Rights Reserved by
-                    <a href="#">Fatec</a>.
-                </p>
-            </div>
+			<div class="col-xs-6 col-md-3">
+				<h6>Colaboradores</h6>
+				<ul class="footer-links">
+					<li><a>Daniela Ramo</a></li>
+					<li><a>Douglas Correia</a></li>
+					<li><a>Gustavo Brito</a></li>
+				</ul>
+			</div>
+		</div>
+		<hr>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 col-sm-6 col-xs-12">
+				<p class="copyright-text">
+					Copyright &copy; 2020 All Rights Reserved by <a href="#">Fatec</a>.
+				</p>
+			</div>
 
-            <div class="col-md-4 col-sm-6 col-xs-12">
-                <ul class="social-icons">
-                    <li><a class="facebook"><i class="fa fa-facebook"></i></a></li>
-                    <li><a class="twitter"><i class="fa fa-twitter"></i></a></li>
-                    <li><a class="dribbble"><i class="fa fa-dribbble"></i></a></li>
-                    <li><a class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
+			<div class="col-md-4 col-sm-6 col-xs-12">
+				<ul class="social-icons">
+					<li><a class="facebook"><i class="fa fa-facebook"></i></a></li>
+					<li><a class="twitter"><i class="fa fa-twitter"></i></a></li>
+					<li><a class="dribbble"><i class="fa fa-dribbble"></i></a></li>
+					<li><a class="linkedin"><i class="fa fa-linkedin"></i></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</footer>
+<script type="text/javascript">
+$('#carroussel').show();
+$('#dynamic-content').hide();
+function searchJobs() {
+	console.log($('#carroussel'));
+	$('#carroussel').hide();
+	$('#dynamic-content').show();
+	getJobs();
+}
+</script>
 </html>
