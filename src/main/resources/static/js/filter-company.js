@@ -2,8 +2,9 @@ var filtro = document.querySelector("#filtrar-tabela");
 
 filtro.addEventListener("input",function(){
 
-    console.log(this.value);
-    var pacientes = document.querySelectorAll(".paciente");
+    var pacientes = document.querySelectorAll("#empresa");
+
+    console.log(pacientes)
 
     if (this.value.length>0) {
       

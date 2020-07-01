@@ -31,65 +31,25 @@
 				<table class="table table-dark">
 					<thead>
 						<tr>
+							<th>id</th>
 							<th>Nome</th>
 							<th>Telefone</th>
 							<th>Email</th>
-                            <th>CNPJ</th>
                             <th>-</th>
                             <th>-</th>
 						</tr>
 					</thead>
-					<tbody id="tabela-pacientes">
-						<tr class="paciente" id="primeiro-paciente">
-							<td class="info-nome">Google</td>
-							<td class="info-peso">123-123</td>
-							<td class="info-altura">text@text.com</td>
-                            <td class="info-gordura">03798-50</td>
-                            <td class="info-gordura"><button type="button" class="btn btn-danger btn-sm">deletar</button></td>
-                            <td class="info-gordura"><button type="button" class="btn btn-primary btn-sm">atualizar</button></td>
-						</tr>
+					<tbody id="tabela-empresas">
 
-						<tr class="paciente" >
-							<td class="info-nome">Facebook</td>
-							<td class="info-peso">123-123</td>
-							<td class="info-altura">text@text.com</td>
-                            <td class="info-gordura">03798-50</td>
-                            <td class="info-gordura"><button type="button" class="btn btn-danger btn-sm">deletar</button></td>
-                            <td class="info-gordura"><button type="button" class="btn btn-primary btn-sm">atualizar</button></td>
-						</tr>
-
-						<tr class="paciente" >
-							<td class="info-nome">Twitter</td>
-							<td class="info-peso">123-123</td>
-							<td class="info-altura">text@text.com</td>
-                            <td class="info-gordura">03798-50</td>
-                            <td class="info-gordura"><button type="button" class="btn btn-danger btn-sm">deletar</button></td>
-                            <td class="info-gordura"><button type="button" class="btn btn-primary btn-sm">atualizar</button></td>
-						</tr>
-
-						<tr class="paciente">
-                            <td class="info-nome">Pinterest</td>
-							<td class="info-peso">123-123</td>
-							<td class="info-altura">text@text.com</td>
-                            <td class="info-gordura">03798-50</td>
-                            <td class="info-gordura"><button type="button" class="btn btn-danger btn-sm">deletar</button></td>
-                            <td class="info-gordura"><button type="button" class="btn btn-primary btn-sm">atualizar</button></td>
-						</tr>
-						<tr class="paciente" >
-							<td class="info-nome">Amazon</td>
-							<td class="info-peso">123-123</td>
-							<td class="info-altura">text@text.com</td>
-                            <td class="info-gordura">03798-50</td>
-                            <td class="info-gordura"><button type="button" class="btn btn-danger btn-sm">deletar</button></td>
-                            <td class="info-gordura"><button type="button" class="btn btn-primary btn-sm">atualizar</button></td>
-						</tr>
 					</tbody>
 				</table>
 				<span id="erro-ajax" class="invisivel">Erro ao buscar os pacientes</span>
-				<button id="buscar-paciente" class="botao bto-principal text-light">Carregar mais</button>
+				<!-- <button id="buscar-paciente" class="botao bto-principal text-light" onclick="getCompany()">Buscar Empresas</button> -->
 			</section>
 		</main>
-		<script src="../js/filtrarEmpresa.js"> </script>
+		<script src="../js/api/company-request.js"> </script>
+		<script src="../js/filter-company.js"> </script>
+		<script src="../js/show-company.js"> </script>
 	</body>
 </html>
  
