@@ -66,6 +66,13 @@ public class JobApplicationController {
 				.map(x -> mapper.entityToDto(x)).collect(Collectors.toList()));
 	}
 
+	@ApiOperation(value = "filter applications by candidate id")
+	@GetMapping(value = "candidate/{id}")
+	public ResponseEntity<List<JobApplicationResponse>> filterJobApplicationsByCandidateId(@Valid @PathVariable Integer id) {
+		return ResponseEntity.ok(service.listJobApplicationsCandidateId(id).stream()
+				.map(x -> mapper.entityToDto(x)).collect(Collectors.toList()));
+	}
+	
 	@ApiOperation(value = "filter applications by job opportunity id")
 	@GetMapping(value = "job-opportunity/{id}")
 	public ResponseEntity<List<JobApplicationResponse>> filterJobApplicationsByJobOpportunity(@Valid @PathVariable Integer id) {
