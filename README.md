@@ -1,14 +1,14 @@
 # JobTech.IO
 
-Este projeto é uma WEB API responsável por controlar o server-side de um sistema de vagas de emprego para a Fatec ZL.
+This project is an initiative of a small group of developers to create an inverted vacancy system where the candidate can register his concept of a good vacancy (with salary, benefits, among others) and the company that is willing to hire him under those conditions can contact him
 
-## Começando
+## Starting
 
-Essas instruções fornecerão uma cópia do projeto em execução na sua máquina local para fins de desenvolvimento e teste.
+These instructions will provide a copy of the project running on your local machine for development and testing purposes.
 
-### Pré-requisitos
+### Requirements
 
-O que você precisa para instalar o software e como instalá-lo
+What you need to install the software and how to install it
 
 `` ``
 Apache Maven: http://maven.apache.org/
@@ -20,63 +20,64 @@ JDK 8 : https://www.oracle.com/java/technologies/javase-jdk8-downloads.html
 MySQL Community Server: https://dev.mysql.com/downloads/mysql/
 `` ``
 
-### Instalando
+### Installing
 
-O projeto foi criado com o Spring initializr (https://start.spring.io/) e para "instalar este projeto" basta que você adquira o código fonte (via git clone preferencialmente) e importe a pasta Jobtech em sua IDE como "Maven Project"
+The project was created with Spring initializr (https://start.spring.io/) and to "install this project" it is enough that you acquire the source code (via git clone preferably) and import the Jobtech folder in your IDE as " Maven Project "
 
- - Será necessário que você dê atenção ao arquivo application.properties (que se encontra no path src/main/resources) para configurar as informações de acesso ao seu banco, exemplo:
+- You will need to pay attention to the application.properties file (found in path src / main / resources) to configure the access information for your database, example:
 
-Conector e local do seu banco:
+Connector and location of your database:
 `` ``
 spring.datasource.url=jdbc:mysql://localhost:3306/dbjobtech?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
 `` ``
 
-Usuário e senha de acesso ao banco:
+Database access user and password:
 `` ``
-spring.datasource.username=meu_usuario
-spring.datasource.password=minha_senha_secreta
+spring.datasource.username=my_user
+spring.datasource.password=my_secret_password
 `` ``
 
-- Dado que você já tenha atendido aos pré-requisitos e tenha uma cópia do código com você, abra o terminal na pasta do projeto e digite:
+- Since you have already met the requirements and have a copy of the code with you, open the terminal in the project folder and type:
 `` ``
 mvn clean install spring-boot:run
 `` ``
--Se o projeto buildar, vá ao navegador e digite http://localhost:8080/swagger-ui.html#/ , você deve ver uma página parecida como a abaixo:
+-If the project builds correctly, go to the browser and type http://localhost:8080/swagger-ui.html, you should see a page similar to the one below:
+!!!INSERT SWAGGER IMG HERE!!!
 
-COLOCAR UMA FOTO DO SWAGGER AQUI
-
-
-## Construído com
-
-* [Maven] (https://maven.apache.org/) - Gerenciamento de dependências
-* [Spring Boot] (https://spring.io/projects/spring-boot) - Redução de configurações Spring
-* [Spring Data] (https://spring.io/projects/spring-data) - Acesso a dados
-* [Spring Security] (https://spring.io/projects/spring-security) - Controle de autenticação e acesso
-* [Spring MVC] (https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html) - Implementação de contêineres para Servlet
+To access the front end, in the browser, type: http://localhost:8080/page/index.html
+!!!INSERT INDEX IMG HERE!!!
 
 
-## Contribuindo
+## Built With
 
-Leia [CONTRIBUTING.md] para obter detalhes sobre nosso código de conduta e o processo para enviar solicitações pull para nós.
+* [Maven] (https://maven.apache.org/) - Dependency management
+* [Spring Boot] (https://spring.io/projects/spring-boot) - Reduced Spring settings
+* [Spring Data] (https://spring.io/projects/spring-data) - Data access
+* [Spring Security] (https://spring.io/projects/spring-security) - Authentication and access control
+* [Spring MVC] (https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html) - Implementing Servlet containers
+* [Spring Data] (https://spring.io/projects/spring-data) - Data access
+* [HTML + CSS + Bootstrap] (https://getbootstrap.com/) - To give that beautiful face for application
+* [Vanilla JS] (http://vanilla-js.com/) - The best JS framework
 
-## Controle de versão
 
-Usamos Git e GitHUb para versionar. Para as versões disponíveis, consulte as [tags neste repositório] (https://github.com/DouglasCorreiaBrito/JobTech.IO/tags).
+## Version Control
 
-## Autores
+We use Git and GitHub to version. For available versions, see the [tags in this repository] (https://github.com/DouglasCorreiaBrito/JobTech.IO/tags).
+
+## Authors
 
 * ** Douglas Correia ** - * Trabalho inicial * -(https://github.com/DouglasCorreiaBrito)
 * ** Gustavo José    ** - * Trabalho inicial * -(https://github.com/gustuxd)
 * ** Daniela Ramo    ** - * Trabalho inicial * -(https://github.com/Daniramo)
 
-Veja também a lista de [colaboradores] (https://github.com/your/project/contributors) que participaram deste projeto.
+As soon as possible, we will build the list of collaborators
 
-## Licença
+## License
 
-Este projeto está licenciado sob a licença MIT - consulte o arquivo [LICENSE.md] (LICENSE.md) para obter detalhes
+This project is licensed under the MIT license - see the [LICENSE.md] file (LICENSE.md) for details
 
-## Agradecimentos
+## Thanks
 
-* Gorjeta para qualquer pessoa cujo código foi usado
-* Inspiração
+* Tip for anyone whose code was used
+* Inspiration
 * etc
